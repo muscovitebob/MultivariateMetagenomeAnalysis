@@ -6,7 +6,18 @@ output:
   pdf_document: default
 ---
 
-```{r}
+# Introduction
 
+The aim of this analysis is to explore the metagenomic dataset assembled by @Forslund:2015aa.
+
+## Data format
+
+```{r warning=FALSE, message=FALSE}
+library(tidyverse)
+data = read_tsv("data.r")
+head(data)
 ```
 
+We can see that the dataset consists of six columns. The first is sample ID, which are not a unique key since every sample may have multiple features. The second is the dataset of origin, which is either Danish (MHD), Swedish (SWE) or Han Chinese (CHN). The third column is treatment status of a particular patient, where they are either healthy (ND CTRL), are having type 2 diabetes treated with metformin included (T2D metformin+), are having type 2 diabetes treated without metformin (T2D metformin-) or are having type 1 diabetes treated (T1D). The fourth column specifies the type of feature in the fifth column. This is either gut microbial/metabolic module (GMM), SEED database annotation, bacterial family, bacterial genus or metagenomic operational taxonomic units (Motu). The fifth column contains the feature names which are coded differently depending on the feature type. Finally, the sixth column contains the abundance of a given feature.
+
+# Bibliography
