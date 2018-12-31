@@ -1,0 +1,109 @@
+Feature name	Level_1	Level_2	Description	
+MF0063	amino acid degradation	positively charged amino acid degradation	arginine degradation (ornithine decarboxylase pathway)	
+MF0009	amino acid degradation	aromatic amino acid degradation	tryptophan degradation	
+MF0084	central metabolism	energy metabolism	pyruvate:ferredoxin oxidoreductase	
+MF0060	carbohydrate degradation	monosaccharide degradation	ribose degradation	
+MF0129	protection against oxidative stress	catalase	catalase	
+MF0030	amino acid degradation	polar, uncharged amino acid degradation	threonine degradation (formate pathway)	
+MF0016	amino acid degradation	nonpolar, aliphatic amino acid degradation	glycine degradation	
+MF0012	amino acid degradation	negatively charged amino acid degradation	aspartate degradation (fumarate pathway)	
+MF0014	amino acid degradation	negatively charged amino acid degradation	glutamate degradation (4-aminobutanoate pathway)	
+MF0055	carbohydrate degradation	monosaccharide degradation	xylose degradation	
+MF0082	central metabolism	energy metabolism	pentose phosphate pathway (oxidative branch)	
+MF0085	central metabolism	energy metabolism	pyruvate:formate lyase	
+MF0011	amino acid degradation	negatively charged amino acid degradation	aspartate degradation (oxaloacetate pathway)	
+MF0094	gas metabolism	hydrogen metabolism	hydrogen metabolism	
+MF0039	amino acid degradation	positively charged amino acid degradation	lysine fermentation to acetate and butyrate (3,6-diaminohexanoate pathway)	
+MF0113	organic acid metabolism	acetate metabolism	acetyl-CoA to acetate	
+MF0083	central metabolism	energy metabolism	pyruvate dehydrogenase complex	
+MF0044	bile acid degradation	glycocholate degradation	glycocholate degradation	
+MF0032	amino acid degradation	polar, uncharged amino acid degradation	glutamine degradation (ammonia pathway)	
+MF0040	amino acid degradation	positively charged amino acid degradation	lysine degradation (cadaverine pathway)	
+MF0131	protection against oxidative stress	superoxide dismutase	superoxide dismutase	
+MF0066	carbohydrate degradation	storage	glycogen metabolism	
+MF0024	amino acid degradation	nonpolar, aliphatic amino acid degradation	methionine degradation (mercaptan pathway)	
+MF0059	carbohydrate degradation	monosaccharide degradation	rhamnose degradation	
+MF0018	amino acid degradation	nonpolar, aliphatic amino acid degradation	proline degradation (glutamate pathway)	
+MF0050	carbohydrate degradation	disaccharide degradation	melibiose degradation	
+MF0058	carbohydrate degradation	monosaccharide degradation	fructose degradation	
+MF0121	organic acid metabolism	propionate metabolism	propionate production (acrylate pathway)	
+MF0086	central metabolism	energy metabolism	TCA cycle	
+MF0074	carbohydrate degradation	sugar alcohol degradation	mannitol degradation	
+MF0104	inorganic nutrient metabolism	nitrogen	nitrate reduction (dissimilatory)	
+MF0052	carbohydrate degradation	glycosaminoglycan degradation	chondroitin sulfate and dermatan sulfate degradation	
+MF0035	amino acid degradation	positively charged amino acid degradation	arginine degradation (agmatine deiminase pathway)	
+MF0033	amino acid degradation	polar, uncharged amino acid degradation	cysteine degradation (mercaptopyruvate pathway)	
+MF0127	organic acid metabolism	succinate metabolism	Succinate production	
+MF0056	carbohydrate degradation	monosaccharide degradation	galactose degradation (Leloir pathway)	
+MF0109	lipid degradation	glycerol degradation	glycerol degradation (glycerol kinase pathway)	
+MF0046	carbohydrate degradation	disaccharide degradation	sucrose degradation	
+MF0034	amino acid degradation	polar, uncharged amino acid degradation	glutamine degradation (oxoglutarate pathway)	
+MF0023	amino acid degradation	nonpolar, aliphatic amino acid degradation	methionine degradation (cysteine pathway)	
+MF0062	carbohydrate degradation	polysaccharide degradation	starch degradation	
+MF0073	carbohydrate degradation	sugar alcohol degradation	sorbitol degradation (dehydrogenase)	
+MF0008	amino acid degradation	aromatic amino acid degradation	tyrosine degradation (hydroxyphenylacetaldehyde pathway)	
+MF0090	central metabolism	energy metabolism	pentose phosphate pathway (non-oxidative branch)	
+MF0071	carbohydrate degradation	sugar acid degradation	D-galacturonate degradation	
+MF0133	secondary metabolites	vitamins	menaquinone production	
+MF0010	amino acid degradation	aromatic amino acid degradation	tyrosine degradation (phenol pathway)	
+MF0091	degradation glycoprotein	glucuronide degradation	beta-D-glucuronide and D-glucuronate degradation	
+MF0051	carbohydrate degradation	disaccharide degradation	sucrose degradation (Actinobacteria)	
+MF0029	amino acid degradation	polar, uncharged amino acid degradation	threonine degradation (glycine pathway)	
+MF0017	amino acid degradation	nonpolar, aliphatic amino acid degradation	alanine degradation (racemase pathway)	
+MF0028	amino acid degradation	polar, uncharged amino acid degradation	serine degradation	
+MF0081	central metabolism	energy metabolism	Glycolysis (pay-off phase)	
+MF0061	carbohydrate degradation	monosaccharide degradation	mannose degradation	
+MF0049	carbohydrate degradation	disaccharide degradation	maltose degradation	
+MF0099	gas metabolism	methanogenesis	methanol conversion	
+MF0015	amino acid degradation	negatively charged amino acid degradation	glutamate degradation (methylaspartate pathway)	
+MF0076	carbohydrate degradation	sugar alcohol degradation	arabitol degradation	
+MF0132	protection against oxidative stress	superoxide reductase	superoxide reductase	
+MF0019	amino acid degradation	nonpolar, aliphatic amino acid degradation	proline degradation (aminopentanoate pathway)	
+MF0007	amino acid degradation	aromatic amino acid degradation	phenylalanine degradation	
+MF0128	organic acid metabolism	succinate metabolism	Propionate conversion to succinate	
+MF0095	gas metabolism	hydrogen metabolism	NADH:ferredoxin oxidoreductase	
+MF0130	protection against oxidative stress	peroxidase	peroxidase	
+MF0006	amines and polyamines degradation	urea degradation	urea degradation	
+MF0077	carbohydrate degradation	sugar alcohol degradation	galactitol degradation	
+MF0004	amines and polyamines degradation	biogenic amine degradation	putrescine degradation	
+MF0037	amino acid degradation	positively charged amino acid degradation	arginine degradation (AST/succinyltransferase pathway)	
+MF0110	lipid degradation	glyoxylate bypass	glyoxylate bypass	
+MF0118	organic acid metabolism	formate metabolism	formate conversion	
+MF0042	amino acid degradation	positively charged amino acid degradation	4-aminobutyrate degradation	
+MF0125	organic acid metabolism	propionate metabolism	propionate production via kinase	
+MF0070	carbohydrate degradation	sugar acid degradation	galactonate degradation	
+MF0106	lipid degradation	beta-oxidation	anaerobic fatty acid beta-oxidation	
+MF0114	organic acid metabolism	butyrate metabolism	acetyl-CoA to crotonyl-CoA	
+MF0092	endotoxin biosynthesis	lipopolysaccharide biosynthesis	kdo2-lipid A synthesis	
+MF0005	amines and polyamines degradation	sialic acid degradation	acetylneuraminate and acetylmannosamine degradation	
+MF0043	amino acid degradation	positively charged amino acid degradation	arginine degradation (agmatinase pathway)	
+MF0075	carbohydrate degradation	sugar alcohol degradation	sorbitol degradation (phosphotransferase)/sorbose degradation	
+MF0045	carbohydrate degradation	disaccharide degradation	trehalose degradation	
+MF0120	organic acid metabolism	lactate metabolism	lactate consumption	
+MF0100	gas metabolism	sulfate metabolism	Sulfate reduction (dissimilatory)	
+MF0053	carbohydrate degradation	monosaccharide degradation	allose degradation	
+MF0124	organic acid metabolism	propionate metabolism	Fucose degradation	
+MF0123	organic acid metabolism	propionate metabolism	propionate production (propanediol pathway)	
+MF0119	organic acid metabolism	lactate metabolism	lactate production	
+MF0048	carbohydrate degradation	disaccharide degradation	lactose degradation	
+MF0116	organic acid metabolism	butyrate metabolism	butyrate production via transferase	
+MF0107	lipid degradation	glycerol degradation	glycerol degradation (propanediol pathway)	
+MF0097	gas metabolism	methanogenesis	Methanogenesis - methyl-coM	
+MF0117	organic acid metabolism	butyrate metabolism	butyrate production via kinase	
+MF0080	central metabolism	energy metabolism	Glycolysis (preparatory phase)	
+MF0063	carbohydrate degradation	polysaccharide degradation	fructan degradation	
+MF0112	organic acid metabolism	acetate metabolism	acetate to acetyl-CoA	
+MF0047	carbohydrate degradation	disaccharide degradation	lactose and galactose degradation (PTS)	
+MF0002	alcohol metabolism	ethanol metabolism	ethanol production (CO2 pathway) 	
+MF0026	amino acid degradation	polar, uncharged amino acid degradation	cysteine biosynthesis/homocysteine degradation	
+MF0102	glycoprotein degradation	mucus degradation	mucin degradation	
+MF0108	lipid degradation	glycerol degradation	glycerol degradation (dihydroxyacetone pathway)	
+MF0001	alcohol metabolism	ethanol metabolism	ethanol production (formate pathway)	
+MF0054	carbohydrate degradation	monosaccharide degradation	arabinose degradation	
+MF0101	gas metabolism	sulfate metabolism	Sulfate reduction (assimilatory)	
+MF0089	central metabolism	energy metabolism	Entner-Doudoroff pathway I	
+MF0003	amines and polyamines degradation	acetylglucosamine degradation	acetylglucosamine degradation	
+MF0031	amino acid degradation	polar, uncharged amino acid degradation	asparagine degradation	
+MF0126	organic acid metabolism	propionate metabolism	propionate production via transferase	
+MF0027	amino acid degradation	polar, uncharged amino acid degradation	cysteine degradation	
+MF0041	amino acid degradation	positively charged amino acid degradation	histidine degradation	

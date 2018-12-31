@@ -1,0 +1,398 @@
+Feature name	Category	Family	Name	Description
+MS0222	Carbohydrates	Polysaccharides	Unknown_carbohydrate_utilization_containing_Fructose-bisphosphate_aldolase	CBSS-280355.3.peg.2835
+MS1134	Phages, Prophages, Transposable elements	Bacteriophage structural proteins	Phage_tail_proteins_2	rRNA_methylation_in_clusters
+MS0343	Membrane Transport	Uni- Sym- and Antiporters	Na(+)_H(+)_antiporter	C_jejuni_colonization_of_chick_caeca
+MS1112	Potassium metabolism	?	Hyperosmotic_potassium_uptake	cAMP_signaling_in_bacteria
+MS0090	?	?	?	Arsenic_resistance
+MS0879	Carbohydrates	Sugar alcohols	Erythritol_utilization	Recycling_of_Peptidoglycan_Amino_Sugars
+MS0224	Protein Metabolism	Protein biosynthesis	Translation_termination_factors_bacterial	CBSS-281090.3.peg.464
+MS0884	?	?	?	Resistance_to_Vancomycin
+MS0247	Carbohydrates	Di- and oligosaccharides	Unknown_oligosaccharide_utilization_Sde_1396	CBSS-316057.3.peg.880
+MS0129	Carbohydrates	Organic acids	Tricarballylate_Utilization	Biogenesis_of_c-type_cytochromes
+MS0688	Stress Response	Periplasmic Stress	Periplasmic_Acid_Stress_Response_in_Enterobacteria	Methionine_Salvage
+MS0704	Protein Metabolism	Protein biosynthesis	Ribosome_LSU_bacterial	N-Acetyl-Galactosamine_and_Galactosamine_Utilization
+MS0590	Carbohydrates	?	Sugar_utilization_in_Thermotogales	Histidine_transporter_and_regulator
+MS0952	Membrane Transport	ABC transporters	ATP-dependent_efflux_pump_transporter_Ybh	Soluble_cytochromes_and_functionally_related_electron_carriers
+MS0719	Carbohydrates	?	VC0266	Nitric_oxide_synthase
+MS0452	?	?	?	DNA_replication,_archaeal_Isaac
+MS0205	?	?	?	CBSS-262728.1.peg.1737
+MS1125	?	?	?	p-Hydroxybenzoate_degradation
+MS0148	Virulence	Iron Scavenging Mechanisms	ABC_transporter_[iron.B12.siderophore.hemin]	CBSS-155864.1.peg.3753
+MS0728	Sulfur Metabolism	Organic sulfur assimilation	DMSP_breakdown	Nucleolar_protein_complex
+MS1267	Clustering-based subsystems	?	CBSS-316273.3.peg.448	NA
+MS0327	Virulence	Iron Scavenging Mechanisms	Vibrioferrin_synthesis	COG2363
+MS0091	?	?	?	At1g52510_AT4G12830_(COG0596)
+MS0231	?	?	?	CBSS-296591.1.peg.2330
+MS0672	?	?	?	Melibiose_Utilization
+MS0644	?	?	?	Lipid_A-Ara4N_pathway_(_Polymyxin_resistance_)
+MS0910	?	?	?	Ribosome_biogenesis_bacterial
+MS0856	?	?	?	Queuosine-Archaeosine_Biosynthesis
+MS0353	Membrane Transport	Sugar Phosphotransferase Systems, PTS	Fructose_and_Mannose_Inducible_PTS	Carbon_Starvation
+MS1329	DNA Metabolism	DNA repair	DNA_repair,_bacterial_RecFOR_pathway	NA
+MS0573	?	?	?	H2:CoM-S-S-HTP_oxidoreductase
+MS0737	Respiration	Electron donating reactions	Coenzyme_F420-H2_dehydrogenase_(methanophenazine)	Outer_membrane
+MS0597	?	?	?	Hydrogenases
+MS0930	Clustering-based subsystems	?	CBSS-138119.3.peg.2719	Shikimate_kinase_containing_cluster
+MS0234	Virulence	Resistance to antibiotics and toxic compounds	MexA-MexB-OprM_Multidrug_Efflux_System	CBSS-313593.3.peg.1152
+MS0900	Virulence	Resistance to antibiotics and toxic compounds	USS-DB-4	Ribosomal_protein_paralogs
+MS0311	?	?	?	CBSS-83332.1.peg.1531
+MS0252	Phages, Prophages, Transposable elements	Bacteriophage structural proteins	Phage_capsid_proteins	CBSS-320372.3.peg.6046
+MS0636	?	?	?	Lactose_and_Galactose_Uptake_and_Utilization
+MS0790	?	?	?	Phycobilisome
+MS0368	?	?	?	Cellulose_synthesis
+MS0796	?	?	?	PnuC-like_transporters
+MS1328	?	?	?	NA
+MS0185	?	?	?	CBSS-222523.1.peg.1311
+MS0561	Carbohydrates	Aminosugars	Neotrehalosadiamine_(NTD)_Biosynthesis_Operon	Glycine_and_Serine_Utilization
+MS0171	?	?	?	CBSS-204773.3.peg.746
+MS0951	Clustering-based subsystems	?	Conserved_cluster_around_acetyltransferase_YpeA_in_Enterobacteria	Sodium_Hydrogen_Antiporter
+MS0551	Virulence	Resistance to antibiotics and toxic compounds	Resistance_to_Vancomycin	Glutathione:_Biosynthesis_and_gamma-glutamyl_cycle
+MS0178	Amino Acids and Derivatives	Proline and 4-hydroxyproline	A_Hypothetical_Protein_Related_to_Proline_Metabolism	CBSS-211586.1.peg.69
+MS0935	?	?	?	Siderophore_Desferrioxamine_E
+MS0516	Dormancy and Sporulation	?	Spore_Core_Dehydration	Flagellum_in_Campylobacter
+MS0656	Clustering-based subsystems	?	CBSS-316407.3.peg.2816	Luciferases
+MS0801	Protein Metabolism	Protein biosynthesis	tRNA_aminoacylation,_His	Polyhydroxybutyrate_metabolism
+MS1257	?	?	?	NA
+MS1127	?	?	?	pVir_Plasmid_of_Campylobacter
+MS1150	Clustering-based subsystems	Carbohydrates	Unknown_sugar_utilization_(cluster_yphABCDEFG)	tRNA_aminoacylation,_Lys
+MS1259	Clustering-based subsystems	?	CBSS-176279.3.peg.868	NA
+MS1240	?	?	?	NA
+MS0207	Dormancy and Sporulation	?	SpoVS_protein_family	CBSS-266117.6.peg.1260
+MS0841	Amino Acids and Derivatives	Aromatic amino acids and derivatives	Indole-pyruvate_oxidoreductase_complex	Putative_hemin_transporter
+MS0075	Clustering-based subsystems	D-tyrosyl-tRNA(Tyr) deacylase (EC 3.1.-.-) cluster	CBSS-342610.3.peg.283	Anaerobic_respiratory_reductases
+MS1119	?	?	?	linker_unit-arabinogalactan_synthesis
+MS0967	?	?	?	Staphylococcal_phi-Mu50B-like_prophages
+MS0569	Protein Metabolism	Protein biosynthesis	tRNA_aminoacylation,_Met	Glyoxylate_bypass
+MS0357	?	?	?	Carboxysome
+MS1338	Carbohydrates	Aminosugars	(GlcNAc)2_Catabolic_Operon	NA
+MS0035	Protein Metabolism	Protein biosynthesis	tRNA_aminoacylation,_Asp_and_Asn	A_protein_believed_to_be_a_subunit_or_accessory_protein_of_the_formate_dehydrogenase
+MS0832	?	?	?	Pterin_biosynthesis
+MS1290	?	?	?	NA
+MS1330	?	?	?	NA
+MS1213	Virulence	Prophage, Transposon	Prophage-encoded_Rst_operon	NA
+MS0738	Membrane Transport	ABC transporters	ABC_transporter_oligopeptide_(TC_3.A.1.5.1)	Oxidative_stress
+MS1236	Dormancy and Sporulation	Spore DNA protection	Dipicolinate_Synthesis	NA
+MS1142	Membrane Transport	?	ECF_class_transporters	tRNA_aminoacylation,_Arg
+MS0243	?	?	?	CBSS-316056.14.peg.880
+MS1062	DNA Metabolism	?	Type_I_Restriction-Modification	UbiE_methyltransferase_family
+MS1043	Membrane Transport	ABC transporters	ABC_transporter_alkylphosphonate_(TC_3.A.1.9.1)	Tricarboxylate_transport_system
+MS1232	?	?	?	NA
+MS1169	?	?	?	tRNAmodification_position_34
+MS1017	Membrane Transport	Sugar Phosphotransferase Systems, PTS	Galactose-inducible_PTS	Tocopherol_Biosynthesis
+MS0088	?	?	?	Aromatic_amino_acid_interconversions_with_aryl_acids
+MS0385	?	?	?	Citrate_Metabolism,_Transport,_and_Regulation
+MS1106	Carbohydrates	Organic acids	2-methylcitrate_to_2-methylaconitate_metabolism_cluster	ZZ_gjo_need_homes
+MS0538	?	?	?	Galactosylceramide_and_Sulfatide_metabolism
+MS0136	Stress Response	Acid stress	Glutamate_transporter_involved_in_acid_tolerance_in_Streptococcus	Branched-Chain_Amino_Acid_Biosynthesis
+MS0778	Virulence	Iron Scavenging Mechanisms	Alcaligin_Siderophore	Phosphate-binding_DING_proteins
+MS1193	Carbohydrates	?	beta-glucuronide_utilization	NA
+MS1156	Clustering-based subsystems	Clustering-based subsystems	Sporulation-related_Hypotheticals	tRNA_aminoacylation,_Thr
+MS0711	?	?	?	Na(+)-translocating_NADH-quinone_oxidoreductase_and_rnf-like_group_of_electron_transport_complexes
+MS0779	?	?	?	Phosphate_metabolism
+MS0522	DNA Metabolism	DNA replication	DNA_Helicase_of_Unknown_Function	Folate_Biosynthesis_(Phoenix_copy)_
+MS0209	Protein Metabolism	Protein biosynthesis	Ribosome_SSU_bacterial	CBSS-267608.1.peg.2815
+MS0459	?	?	?	Dehydrogenase_complexes
+MS0102	Virulence	Iron Scavenging Mechanisms	Iron_acquisition_in_Streptococcus	Auxin_degradation
+MS1005	Carbohydrates	Di- and oligosaccharides	Melibiose_Utilization	Test2
+MS0617	?	?	?	Isoleucine_degradation
+MS1164	?	?	?	tRNA_modification_yeast_cytoplasmic
+MS0388	Regulation and Cell signaling	Programmed Cell Death and Toxin-antitoxin Systems	Toxin-antitoxin_replicon_stabilization_systems	Cluster_Ytf_and_putative_sugar_transporter
+MS0604	Virulence	Resistance to antibiotics and toxic compounds	USS-DB-6	Inositol_catabolism
+MS0230	?	?	?	CBSS-292415.3.peg.2341
+MS0695	Clustering-based subsystems	?	Predicted_secretion_system_X	Molybdopterin_experimental
+MS1293	Membrane Transport	Iron transport	ABC-type_iron_transport_system	NA
+MS0598	?	?	?	Hydroxyaromatic_decarboxylase_family
+MS0483	?	?	?	Erythritol_utilization
+MS0896	?	?	?	Ribonucleotide_reductase_cluster
+MS1174	Membrane Transport	Uni- Sym- and Antiporters	Proton-dependent_Peptide_Transporters	NA
+MS0690	Protein Metabolism	Protein biosynthesis	Translation_elongation_factor_G_family	Methylglyoxal_Metabolism
+MS1104	Miscellaneous	?	Archease	YjeE
+MS0957	Protein Metabolism	Protein biosynthesis	Programmed_frameshift	Spore_Coat
+MS0595	?	?	?	Hyaluronate_utilization
+MS0012	Clustering-based subsystems	?	CBSS-281090.3.peg.464	ABC_transporter_branched-chain_amino_acid_(TC_3.A.1.4.1)
+MS0008	?	?	?	5-FCL-like_protein
+MS0233	Protein Metabolism	Protein degradation	Dipeptidases_(EC_3.4.13.-)	CBSS-312309.3.peg.1965
+MS0001	?	?	?	(GlcNAc)2_Catabolic_Operon
+MS0571	Clustering-based subsystems	?	CBSS-316057.3.peg.3521	GroEL_GroES
+MS0332	Cell Wall and Capsule	Capsular and extracellular polysacchrides	Streptococcal_Hyaluronic_Acid_Capsule	CO_Dehydrogenase
+MS1085	?	?	?	Vibrio_pathogenicity_island
+MS0891	Virulence	Resistance to antibiotics and toxic compounds	USS-DB-1	Rhamnose_containing_glycans
+MS1113	Regulation and Cell signaling	Programmed Cell Death and Toxin-antitoxin Systems	Fratricide_in_Streptococcus	carbazol_degradation_cluster
+MS0156	Cell Wall and Capsule	?	Sortase	CBSS-176299.4.peg.1996A
+MS0471	Clustering-based subsystems	?	CBSS-316279.3.peg.746	EC49-61
+MS0632	Miscellaneous	?	YaaA	LMPTP_YwlE_cluster
+MS1145	Virulence	Regulation of virulence	VieSAB_signal_transduction_system_of_Vibrio	tRNA_aminoacylation,_Glu_and_Gln
+MS0399	?	?	?	Coenzyme_PQQ_synthesis
+MS1056	?	?	?	Type_I_Restriction-Modification
+MS0345	?	?	?	Caffeic_acid_derivatives
+MS0067	Nucleosides and Nucleotides	Purines	Purine_nucleotide_synthesis_regulator	Amidase_clustered_with_urea_and_nitrile_hydratase_functions
+MS0404	Clustering-based subsystems	?	CBSS-290633.1.peg.1906	Competence_or_DNA_damage-inducible_protein_CinA_and_related_protein_families
+MS0050	?	?	?	Adaptation_to_d-cysteine
+MS0682	Virulence	Resistance to antibiotics and toxic compounds	Lysozyme_inhibitors	Methanogenesis_from_methylated_compounds
+MS1326	Virulence	Type III, Type IV, Type VI, ESAT secretion systems	ESAT-6_proteins_secretion_system_in_Firmicutes	NA
+MS1147	?	?	?	tRNA_aminoacylation,_His
+MS0869	Cofactors, Vitamins, Prosthetic Groups, Pigments	NAD and NADP	NAD_consumption	RNA_polymerase_II_initiation_factors
+MS0251	Virulence	Regulation of virulence	Two-component_Response_Regulator_of_Virulence_ResDE	CBSS-318161.14.peg.2599
+MS1128	Cell Division and Cell Cycle	Cell cycle in Prokaryota	Heterocyst_formation_in_cyanobacteria	polyamine_Halophile
+MS0400	?	?	?	Colanic_acid_biosynthesis
+MS0666	Regulation and Cell signaling	Programmed Cell Death and Toxin-antitoxin Systems	A_toxin-antitoxin_module_cotranscribed_with_DinB	Maltose_and_Maltodextrin_Utilization
+MS0707	Amino Acids and Derivatives	?	Phosphonoalanine_utilization	NAD_and_NADP_cofactor_biosynthesis_global
+MS0821	Clustering-based subsystems	?	CBSS-193567.1.peg.90	Proteasome_subunit_alpha_archaeal_cluster
+MS0715	?	?	?	Natural_DNA_Transformation_in_Vibrio
+MS1006	Cell Wall and Capsule	Capsular and extracellular polysacchrides	Xanthan_Exopolysaccharide_Biosynthesis_and_Export	Tetrathionate_respiration
+MS0255	Protein Metabolism	Protein biosynthesis	Ribosomal_protein_paralogs	CBSS-323097.3.peg.2594
+MS1312	Clustering-based subsystems	?	PA0057_cluster	NA
+MS0424	Respiration	ATP synthases	V-Type_ATP_synthase	D-Alanyl_Lipoteichoic_Acid_Biosynthesis
+MS0260	DNA Metabolism	DNA repair	Nonhomologous_End-Joining_in_Bacteria	CBSS-326442.4.peg.1852
+MS0798	?	?	?	Polyadenylation_bacterial
+MS0926	Secondary Metabolism	Biosynthesis of phenylpropanoids	Apigenin_derivatives	Serine_endopeptidase_(EC_3.4.21.-)
+MS1185	Protein Metabolism	Protein folding	GroEL_GroES	NA
+MS0371	Miscellaneous	?	Archease2	Chitin_and_N-acetylglucosamine_utilization
+MS0559	?	?	?	Glycerolipid_and_Glycerophospholipid_Metabolism_in_Bacteria
+MS0629	DNA Metabolism	?	DNA_phosphorothioation	L-fucose_utilization_temp
+MS0658	?	?	?	Lysine_biosynthesis_AAA_pathway_2
+MS0386	Stress Response	Cold shock	Cold_shock,_CspA_family_of_proteins	Citrate_Utilization_System_(CitAB,_CitH,_and_tctABC)
+MS0693	Clustering-based subsystems	?	KH_domain_RNA_binding_protein_YlqC	Molybdenum_cofactor_biosynthesis
+MS0487	?	?	?	Exopolysaccharide_Biosynthesis
+MS0135	Protein Metabolism	Protein biosynthesis	Ribosome_SSU_chloroplast	BlaR1_Family_Regulatory_Sensor-transducer_Disambiguation
+MS0620	Stress Response	?	Commensurate_regulon_activation	KDO2-Lipid_A_biosynthesis
+MS0689	Sulfur Metabolism	Organic sulfur assimilation	Utilization_of_glutathione_as_a_sulphur_source	Methylcitrate_cycle
+MS0309	Virulence	Iron Scavenging Mechanisms	Petrobactin-mediated_iron_uptake_system	CBSS-83331.1.peg.3039
+MS0259	Regulation and Cell signaling	?	The_Chv_regulatory_system_of_Alphaproteobacteria	CBSS-323850.3.peg.3284
+MS0137	?	?	?	Branched_chain_amino_acid_degradation_regulons
+MS0313	?	?	?	CBSS-83333.1.peg.946
+MS0273	RNA Metabolism	RNA processing and modification	Ribosome_biogenesis_archaeal	CBSS-349966.3.peg.197
+MS0358	DNA Metabolism	DNA recombination	DNA_recombination,_archaeal	Carboxysome_FM_working_copy
+MS1003	Virulence	Iron Scavenging Mechanisms	Iron_Scavenging_cluster_in_Thermus	Terminal_cytochrome_d_ubiquinol_oxidases
+MS1154	?	?	?	tRNA_aminoacylation,_Pyr
+MS0486	Virulence	Adhesion	Streptococcus_pyogenes_recombinatorial_zone	Ethylmalonyl-CoA_pathway_of_C2_assimilation
+MS0071	Cell Wall and Capsule	Capsular and extracellular polysacchrides	Pseudaminic_Acid_Biosynthesis	Ammonia_assimilation
+MS0507	?	?	?	Fatty_Acid_Biosynthesis_FASII
+MS0835	?	?	?	Pterin_metabolism_3
+MS0670	?	?	?	Marinocine,_a_broad-spectrum_antibacterial_protein
+MS0609	Membrane Transport	ABC transporters	ABC_transporter_peptide_(TC_3.A.1.5.5)	Iron(III)_dicitrate_transport_system_Fec
+MS1065	Regulation and Cell signaling	?	Signal_transduction_module_[RsbQ_hydrolase_-_PAS_domain]	Uncharacterized_metabolite_ABC_transporter_in_Enterobacteriaceae_YbbAP
+MS0037	Virulence	Resistance to antibiotics and toxic compounds	Teicoplanin-resistance_in_Staphylococcus	Accessory_Gene_Regulator
+MS0216	Clustering-based subsystems	?	LMPTP_YfkJ_cluster	CBSS-272569.1.peg.3198
+MS0499	RNA Metabolism	Transcription	RNA_polymerase_chloroplast	Experimental_-_Histidine_Degradation
+MS1047	Clustering-based subsystems	Probably Ybbk-related hypothetical membrane proteins	CBSS-316057.3.peg.659	Twin-arginine_translocation_system
+MS1331	?	?	?	NA
+MS0006	Metabolism of Aromatic Compounds	Anaerobic degradation of aromatic compounds	Hydroxyaromatic_decarboxylase_family	4-Hydroxyphenylacetic_acid_catabolic_pathway
+MS1250	Amino Acids and Derivatives	Arginine; urea cycle, polyamines	Urea_carboxylase_and_Allophanate_hydrolase_cluster	NA
+MS0320	Amino Acids and Derivatives	Aromatic amino acids and derivatives	Bacilysin_biosynthesis	COG0451
+MS0495	?	?	?	Experimental-PTPS
+MS0878	?	?	?	Recycling_of_Peptidoglycan_Amino_Acids
+MS0053	Clustering-based subsystems	Lysine, threonine, methionine, and cysteine	YeiH	Adhesion_of_Campylobacter
+MS1180	?	?	?	NA
+MS0016	Protein Metabolism	Protein biosynthesis	tRNA_aminoacylation,_Pro	ABC_transporter_oligopeptide_(TC_3.A.1.5.1)
+MS0864	?	?	?	RNA_3'-terminal_phosphate_cyclase
+MS0047	Virulence	Resistance to antibiotics and toxic compounds	Resistance_to_fluoroquinolones	Acyclic_terpenes_utilization
+MS0526	Clustering-based subsystems	Carbohydrates	Unknown_carbohydrate_utilization_(_cluster_Yeg_)	Formate_hydrogenase
+MS1315	?	?	?	NA
+MS0610	?	?	?	Iron-sulfur_cluster_assembly
+MS1308	?	?	?	NA
+MS1163	?	?	?	tRNA_modification_position_37
+MS0717	Clustering-based subsystems	Clustering-based subsystems	CBSS-262719.3.peg.410	NiFe_hydrogenase_maturation
+MS0655	?	?	?	Listeria_phi-A118-like_prophages
+MS0775	Virulence	Iron Scavenging Mechanisms	Salmochelin-mediated_Iron_Acquisition	Phenylpropanoid_compound_degradation
+MS0060	Virulence	Adhesion	Curli_production	Alkanesulfonate_assimilation
+MS0038	Virulence	Adhesion	Type_1_pili_(mannose-sensitive_fimbriae)	Accessory_colonization_factor
+MS0329	Respiration	Electron accepting reactions	trimethylamine_N-oxide_(TMAO)_reductase	COG3146_experimental
+MS0579	Stress Response	?	Phage_shock_protein_(psp)_operon	Heme,_hemin_uptake_and_utilization_systems_in_GramPositives
+MS0587	Dormancy and Sporulation	?	Persister_Cells	High_affinity_phosphate_transporter_and_control_of_PHO_regulon
+MS0743	Clustering-based subsystems	?	CBSS-83333.1.peg.946	PTS_uptake_system_scratch
+MS0749	DNA Metabolism	DNA repair	DNA_repair,_bacterial_UvrD_and_related_helicases	Pentose_phosphate_pathway
+MS0909	?	?	?	Ribosome_activity_modulation
+MS0921	DNA Metabolism	?	DNA_structural_proteins,_bacterial	SecY2-SecA2_Specialized_Transport_System
+MS0927	Protein Metabolism	Protein biosynthesis	Ribosome_activity_modulation	Serotype_determining_Capsular_polysaccharide_biosynthesis_in_Staphylococcus
+MS0905	Clustering-based subsystems	?	CBSS-214092.1.peg.3450	Ribosome_SSU_bacterial
+MS0306	?	?	?	CBSS-69014.3.peg.2094
+MS0461	RNA Metabolism	RNA processing and modification	RNA_3'-terminal_phosphate_cyclase	Deoxyribose_and_Deoxynucleoside_Catabolism
+MS1304	Cofactors, Vitamins, Prosthetic Groups, Pigments	Folate and pterines	p-Aminobenzoyl-Glutamate_Utilization	NA
+MS0570	Protein Metabolism	Protein processing and modification	Ubiquitin-like_archaeal_modifier_proteins_(SAMPs)	Gram-Positive_Extracellular_Nucleases
+MS1307	?	?	?	NA
+MS0225	RNA Metabolism	Transcription	RNA_polymerase_bacterial	CBSS-288000.5.peg.1793
+MS0340	?	?	?	CR_clusters_Euk_7_GlucoseP_isomerase
+MS1097	Carbohydrates	Di- and oligosaccharides	Sucrose_utilization_Shewanella	Yfa_cluster
+MS0087	?	?	?	Aromatic_amino_acid_degradation
+MS1300	Clustering-based subsystems	Hypothetical Related to Dihydroorate Dehydrogenase	Hypothetical_Related_to_Dihydroorotate_dehydrogenase	NA
+MS0593	DNA Metabolism	?	Restriction-Modification_System	Housecleaning_nucleoside_triphosphate_pyrophosphatases
+MS0467	?	?	?	Dipeptidases_(EC_3.4.13.-)
+MS0746	Protein Metabolism	Protein biosynthesis	tRNA_aminoacylation,_Leu	Paerucumarin_Biosynthesis
+MS0339	Amino Acids and Derivatives	Arginine; urea cycle, polyamines	Urease_subunits	CR_clusters_Euk_6_lactateDehB
+MS0338	?	?	?	CR_clusters_Euk_5_hexokinase2
+MS1025	?	?	?	Transcription_elongation_factors,_archaeal
+MS0312	Clustering-based subsystems	?	CBSS-176279.3.peg.1262	CBSS-83332.1.peg.3803
+MS1294	Virulence	Regulation of virulence	Streptococcus_pyogenes_virulence_regulators	NA
+MS0086	Virulence	Toxins and superantigens	Diphtheria_toxin	Aromatic_Amin_Catabolism
+MS1148	RNA Metabolism	Transcription	RNA_polymerase_III_initiation_factors	tRNA_aminoacylation,_Ile
+MS1245	RNA Metabolism	Transcription	RNA_polymerase_archaeal_initiation_factors	NA
+MS0367	Carbohydrates	One-carbon Metabolism	Methanogenesis_from_methylated_compounds	Cell_wall_related_cluster
+MS0729	Clustering-based subsystems	?	Ribonucleotide_reductase_cluster	Nucleoside_triphosphate_pyrophosphohydrolase_MazG
+MS0401	DNA Metabolism	DNA repair	ATP-dependent_Nuclease	Colicin_V_and_Bacteriocin_Production_Cluster
+MS0153	Clustering-based subsystems	Cell Division	Cell_Division_Cluster	CBSS-176280.1.peg.1561
+MS0745	Clustering-based subsystems	Hypothetical associated with RecF	Hypothetical_Coupled_to_RecF	P_uptake_(cyanobacteria)
+MS0521	Respiration	Electron donating reactions	Na(+)-translocating_NADH-quinone_oxidoreductase_and_rnf-like_group_of_electron_transport_complexes	Folate_Biosynthesis
+MS1320	Membrane Transport	SecY2-SecA2 specialized system	SecY2-SecA2_Specialized_Transport_System	NA
+MS0947	?	?	?	Signal_peptidase
+MS1080	Protein Metabolism	Protein biosynthesis	Trans-translation_by_stalled_ribosomes	V-Type_ATP_synthase
+MS0408	Virulence	Invasion and intracellular resistance	Listeria_surface_proteins:_LPXTG_motif	Control_of_cell_elongation_-_division_cycle_in_Bacilli
+MS0500	Regulation and Cell signaling	?	CytR_regulation	Experimental_-_hydroxyproline_metabolism
+MS1297	DNA Metabolism	DNA recombination	RuvABC_plus_a_hypothetical	NA
+MS0289	Cell Wall and Capsule	?	Recycling_of_Peptidoglycan_Amino_Sugars	CBSS-393130.3.peg.794
+MS0611	Fatty Acids, Lipids, and Isoprenoids	Isoprenoids	polyprenyl_synthesis	Iron-sulfur_experimental
+MS1295	?	?	?	NA
+MS1337	?	?	?	NA
+MS1229	?	?	?	NA
+MS0394	Clustering-based subsystems	DNA metabolism	CBSS-269801.1.peg.2186	Coenzyme_B12_biosynthesis
+MS0489	Protein Metabolism	Protein degradation	Omega_peptidases_(EC_3.4.19.-)	Exosporium
+MS1079	Regulation and Cell signaling	?	Global_Two-component_Regulator_PrrBA_in_Proteobacteria	Utilization_of_glutathione_as_a_sulphur_source
+MS0501	Regulation and Cell signaling	Programmed Cell Death and Toxin-antitoxin Systems	Bacterial_Caspases	Experimental_Iddo_1
+MS0379	Virulence	Invasion and intracellular resistance	Listeria_surface_proteins:_Internalin-like_proteins	Choline_and_Betaine_Uptake_and_Betaine_Biosynthesis
+MS0624	Stress Response	Dessication stress	O-antigen_capsule_important_for_environmental_persistence	L-2-amino-thiazoline-4-carboxylic_acid-Lcysteine_conversion
+MS0628	Virulence	Iron Scavenging Mechanisms	Siderophore_Aerobactin	L-fucose_utilization
+MS1053	Clustering-based subsystems	Flagella protein?	CBSS-323098.3.peg.2823	Type_III_secretion_system
+MS0301	Protein Metabolism	Protein biosynthesis	tRNA_aminoacylation,_Phe	CBSS-562.2.peg.633
+MS1207	Protein Metabolism	Protein biosynthesis	tRNA_aminoacylation,_Ser	NA
+MS0228	?	?	?	CBSS-292414.1.peg.3669
+MS0941	?	?	?	Siderophore_assembly_kit
+MS0722	?	?	?	Nitrosative_stress
+MS0547	Cell Wall and Capsule	Gram-Negative cell wall components	Inner_membrane_protein_YhjD_and_conserved_cluster_involved_in_LPS_biosynthesis	Glutamine_synthetases
+MS0043	?	?	?	Acetyl-CoA_fermentation_to_Butyrate
+MS0393	?	?	?	Coenzyme_A_Biosynthesis
+MS1100	Cell Wall and Capsule	Gram-Negative cell wall components	Lipopolysaccharide-related_cluster_in_Alphaproteobacteria	YgfZ-Fe-S_clustering
+MS0732	Clustering-based subsystems	?	CBSS-159087.4.peg.2189	Octadecanoids
+MS1160	DNA Metabolism	?	YcfH	tRNA_cmo5U_synthesis
+MS0296	Membrane Transport	ABC transporters	ABC_transporter_of_unknown_substrate_X	CBSS-479436.4.peg.472
+MS0304	Sulfur Metabolism	Organic sulfur assimilation	L-Cystine_Uptake_and_Metabolism	CBSS-584.1.peg.3382
+MS0532	Clustering-based subsystems	?	Yfa_cluster	Fructose_utilization
+MS0759	Clustering-based subsystems	?	CBSS-235.1.peg.567	Perosamine_Synthesis_Vibrio
+MS0321	Carbohydrates	Organic acids	Alpha-acetolactate_operon	COG0523
+MS1342	Clustering-based subsystems	?	CBSS-251221.1.peg.1863	NA
+MS0352	?	?	?	Capsular_surface_virulence_antigen_loci
+MS0280	Clustering-based subsystems	?	Putative_sulfate_assimilation_cluster	CBSS-364106.7.peg.3211
+MS0007	?	?	?	5-FCL-like_Experimental
+MS0194	Clustering-based subsystems	Chromosome Replication	SeqA_and_Co-occurring_Genes	CBSS-246196.1.peg.1974
+MS1170	Virulence	Resistance to antibiotics and toxic compounds	Tolerance_to_colicin_E2	trimethylamine_N-oxide_(TMAO)_reductase
+MS0175	?	?	?	CBSS-208964.1.peg.3826
+MS0078	Protein Metabolism	Selenoproteins	Selenoprotein_O	Anthrose_Biosynthesis
+MS0138	Secondary Metabolism	Bacterial cytostatics, differentiation factors and antibiotics	Phenazine_biosynthesis	Broadly_distributed_proteins_not_in_subsystems
+MS0237	Virulence	Resistance to antibiotics and toxic compounds	USS-DB-2	CBSS-314269.3.peg.1840
+MS0502	Virulence	Resistance to antibiotics and toxic compounds	The_mdtABCD_multidrug_resistance_cluster	Experimental_Sulfur_transfer_Archaea
+MS0818	Membrane Transport	?	Ferrous_iron_transporter_EfeUOB,_low-pH-induced	Proteasome_archaeal
+MS1203	?	?	?	NA
+MS0863	RNA Metabolism	Transcription	Transcription_factors_bacterial	Quorum_sensing_regulation_in_Pseudomonas
+MS0519	Clustering-based subsystems	?	Lipopolysaccharide_assembly_cluster	Flavodoxin
+MS0661	?	?	?	MLST
+MS0942	?	?	?	Siderophore_biosynthesis_orphans
+MS0213	Clustering-based subsystems	Lysine Biosynthesis	A_Glutathione-dependent_Thiol_Reductase_Associated_with_a_Step_in_Lysine_Biosynthesis	CBSS-269801.1.peg.1725
+MS0199	Clustering-based subsystems	Translation	CBSS-243265.1.peg.198	CBSS-257314.1.peg.752
+MS0107	?	?	?	Bacterial_Cell_Division
+MS0190	Clustering-based subsystems	?	CBSS-224911.1.peg.435	CBSS-232721.5.peg.360
+MS0462	?	?	?	Di-Inositol-Phosphate_biosynthesis
+MS1262	Phages, Prophages, Transposable elements	Phage Host Interactions	Phage_entry_and_exit	NA
+MS1322	Cell Wall and Capsule	?	YjeE	NA
+MS0084	?	?	?	Arginine_Deiminase_Pathway
+MS0272	?	?	?	CBSS-349161.4.peg.2427
+MS0932	?	?	?	Siderophore_Achromobactin
+MS0342	Protein Metabolism	Protein biosynthesis	tRNA_aminoacylation,_Trp	CSBB-630.2.peg.1023
+MS0283	Protein Metabolism	Protein biosynthesis	Translation_initiation_factors_bacterial	CBSS-376686.6.peg.291
+MS0773	?	?	?	Phenylalanine_and_Tyrosine_Branches_from_Chorismate
+MS0842	?	?	?	Putative_sugar_ABC_transporter_(ytf_cluster)
+MS0825	Clustering-based subsystems	Two related proteases	CBSS-257314.1.peg.676	Protein_degradation
+MS0528	Protein Metabolism	Protein biosynthesis	tRNA_aminoacylation,_Ile	Frankia_C1_regulator
+MS0080	?	?	?	Archaeal_lipids
+MS0685	?	?	?	Methicillin_resistance_in_Staphylococci
+MS0546	Regulation and Cell signaling	Antibacterial peptides	Bacteriocin-like_peptides_Blp	Glutamine,_Glutamate,_Aspartate_and_Asparagine_Biosynthesis
+MS1198	Virulence	Invasion and intracellular resistance	Salmonella_invasion_locus	NA
+MS0109	?	?	?	Bacterial_Cytoskeleton
+MS0925	DNA Metabolism	DNA replication	Plasmid_replication	Serine_Biosynthesis
+MS1194	Amino Acids and Derivatives	Glutamine, glutamate, aspartate, asparagine; ammonia assimilation	Glutamine_synthetases	NA
+MS0054	?	?	?	Agrobacterium_opine_transport
+MS1234	Virulence	Quorum sensing and biofilm formation	Quorum_Sensing:_Autoinducer-2_Synthesis	NA
+MS0606	RNA Metabolism	Transcription	Transcription_factors_cyanobacterial_RpoD-like_sigma_factors	Inteins
+MS0423	Clustering-based subsystems	Carbohydrates	Beta-lactamase_cluster_in_Streptococcus	Cytolysin_and_Lipase_operon_in_Vibrio
+MS0294	Cell Division and Cell Cycle	?	Intracellular_septation_in_Enterobacteria	CBSS-446462.5.peg.2987
+MS0398	?	?	?	Coenzyme_F420_synthesis
+MS0634	DNA Metabolism	DNA repair	DNA_repair,_UvrABC_system	Lactate_utilization
+MS1212	?	?	?	NA
+MS0127	?	?	?	Biofilm_Adhesin_Biosynthesis
+MS0305	Cell Wall and Capsule	Gram-Negative cell wall components	Lipopolysaccharide_assembly	CBSS-630.2.peg.3360
+MS0373	Virulence	Fimbriae of the Chaperone/Usher Assembly Pathway	alpha-Fimbriae	Chlorobenzoate_degradation
+MS0381	Clustering-based subsystems	?	CBSS-243277.1.peg.4359	Chorismate:_Intermediate_for_synthesis_of_PAPA_antibiotics,_PABA,_anthranilate,_3-hydroxyanthranilate_and_more.
+MS0419	?	?	?	CytR_regulation
+MS0635	?	?	?	Lacto-N-Biose_I_and_Galacto-N-Biose_Metabolic_Pathway
+MS0755	?	?	?	Peripheral_Glucose_Catabolism_Pathways
+MS0820	Stress Response	?	Hfl_operon	Proteasome_eukaryotic
+MS1178	Clustering-based subsystems	?	CBSS-211586.1.peg.3133	NA
+MS1278	Cell Division and Cell Cycle	Cell cycle in Prokaryota	MukBEF_Chromosome_Condensation	NA
+MS0409	Virulence	Resistance to antibiotics and toxic compounds	Multiple_Antibiotic_Resistance_MAR_locus	Copper_homeostasis
+MS0657	Virulence	Adhesion	Mediator_of_hyperadherence_YidE_in_Enterobacteria_and_its_conserved_region	Lysine_Biosynthesis_DAP_Pathway
+MS0893	DNA Metabolism	?	Nucleoid-associated_proteins_in_Bacteria	Riboflavin,_FMN_and_FAD_metabolism
+MS0015	?	?	?	ABC_transporter_of_unknown_substrate_X
+MS1242	Clustering-based subsystems	?	Conserved_cluster_in_Enterobacteriaceae_downstream_from_YqjA,_a_DedA_family_protein	NA
+MS0750	Clustering-based subsystems	?	Shikimate_kinase_containing_cluster	Peptide_methionine_sulfoxide_reductase
+MS1023	?	?	?	Toxin_co-regulated_pilus
+MS0623	?	?	?	L-2-amino-adipate_to_lysine_module
+MS0013	?	?	?	ABC_transporter_dipeptide_(TC_3.A.1.5.2)
+MS0692	?	?	?	Mevalonate_Branch_of_Isoprenoid_Biosynthesis
+MS1186	Membrane Transport	Lipoprotein sorting	Lipoprotein_sorting_system	NA
+MS0647	Clustering-based subsystems	Ribosome-related cluster	A_Gammaproteobacteria_Cluster_Relating_to_Translation	Lipopolysaccharide-related_cluster_in_Alphaproteobacteria
+MS0741	Respiration	?	Flavocytochrome_C	PQQ-dependent_quinoprotein_dehydrogenases
+MS0196	Clustering-based subsystems	Biosynthesis of galactoglycans and related lipopolysacharides	CBSS-376686.6.peg.291	CBSS-251221.1.peg.1863
+MS1248	RNA Metabolism	RNA processing and modification	RNA_processing_orphans	NA
+MS0172	?	?	?	CBSS-205914.5.peg.1403
+MS0615	Clustering-based subsystems	?	CBSS-393131.3.peg.612	Iron_siderophore_sensor_&_receptor_system
+MS1281	Stress Response	Detoxification	D-tyrosyl-tRNA(Tyr)_deacylase	NA
+MS0248	Protein Metabolism	Protein biosynthesis	tRNA_aminoacylation,_Arg	CBSS-316273.3.peg.227
+MS0659	Virulence	Resistance to antibiotics and toxic compounds	Streptococcus_pneumoniae_Vancomycin_Tolerance_Locus	Lysine_degradation
+MS1260	Protein Metabolism	Protein biosynthesis	tRNA_aminoacylation,_Tyr	NA
+MS0391	?	?	?	Cobalamin_synthesis
+MS1013	?	?	?	Threonine_anaerobic_catabolism_gene_cluster
+MS0046	?	?	?	Acriflavin_resistance_cluster
+MS0370	Cofactors, Vitamins, Prosthetic Groups, Pigments	Pyridoxine	Pyridoxin(Vitamin_B6)_Degradation_Pathway	Central_meta-cleavage_pathway_of_aromatic_compound_degradation
+MS1123	Sulfur Metabolism	Organic sulfur assimilation	Taurine_Utilization	n-Phenylalkanoic_acid_degradation
+MS0786	?	?	?	Phosphorylcholine_incorporation_in_LPS
+MS0723	Clustering-based subsystems	Probably GTP or GMP signaling related	CBSS-176299.4.peg.1292	Nodulation_in_Rhizobia
+MS1152	Virulence	Resistance to antibiotics and toxic compounds	Adaptation_to_d-cysteine	tRNA_aminoacylation,_Phe
+MS0709	?	?	?	NAD_regulation
+MS1284	Plasmids	Plasmid replication	F_plasmid_replication	NA
+MS0946	Protein Metabolism	Protein biosynthesis	Translation_elongation_factors_bacterial	SigmaB_stress_responce_regulation
+MS1117	Clustering-based subsystems	?	LMPTP_YwlE_cluster	dTDP-rhamnose_synthesis
+MS0678	Cell Division and Cell Cycle	Cell cycle in Prokaryota	Two_cell_division_clusters_relating_to_chromosome_partitioning	Mercury_resistance_operon
+MS0201	Stress Response	?	Universal_stress_protein_family	CBSS-261594.1.peg.2640
+MS0887	Stress Response	?	Sugar-phosphate_stress_regulation	Respiratory_dehydrogenases_1
+MS0169	?	?	?	CBSS-196620.1.peg.2477
+MS0197	Clustering-based subsystems	?	CBSS-160492.1.peg.550	CBSS-257314.1.peg.488
+MS0211	Carbohydrates	Monosaccharides	Hexose_Phosphate_Uptake_System	CBSS-269799.3.peg.2220
+MS0307	Protein Metabolism	Secretion	Twin-arginine_translocation_system	CBSS-74546.3.peg.720
+MS0378	Clustering-based subsystems	?	CBSS-562.2.peg.5158_SK3_including	Choline_Transport
+MS0802	Regulation and Cell signaling	?	Rcs_phosphorelay_signal_transduction_pathway	Polymyxin_Synthetase_Gene_Cluster_in_Bacillus
+MS0984	?	?	?	Sulfatases_and_sulfatase_modifying_factor_1
+MS0491	Virulence	Quorum sensing and biofilm formation	Biofilm_Adhesin_Biosynthesis	Experimental-COG3533
+MS0359	?	?	?	Carnitine_Metabolism_in_Microorganisms
+MS0986	?	?	?	Sulfate_reduction-associated_complexes
+MS0382	Virulence	Fimbriae of the Chaperone/Usher Assembly Pathway	beta-Fimbriae	Chorismate_Synthesis
+MS0455	?	?	?	Dabb
+MS0826	Membrane Transport	ABC transporters	ABC_transporter_dipeptide_(TC_3.A.1.5.2)	Protein_secretion_by_ABC-type_exporters
+MS0073	Virulence	Regulation of virulence	A_conserved_operon_linked_to_TyrR_and_possibly_involved_in_virulence	Anaerobic_Oxidative_Degradation_of_L-Ornithine
+MS1105	Clustering-based subsystems	?	CBSS-316273.3.peg.2709	YrdC-YciO
+MS0674	Virulence	Quorum sensing and biofilm formation	Acyl_Homoserine_Lactone_(AHL)_Autoinducer_Quorum_Sensing_	Menaquinone_Biosynthesis_via_Futalosine
+MS0713	Virulence	Quorum sensing and biofilm formation	Quorum_sensing_in_Yersinia	Na_dependent_energetics
+MS0919	Protein Metabolism	Protein degradation	Putative_TldE-TldD_proteolytic_complex	Salmochelin-mediated_Iron_Acquisition
+MS0354	?	?	?	Carbon_monoxide_dehydrogenase_maturation_factors
+MS0876	?	?	?	Rcs_phosphorelay_signal_transduction_pathway
+MS0310	Clustering-based subsystems	Hypothetical protein possible functionally linked with Alanyl-tRNA synthetase	CBSS-257314.1.peg.488	CBSS-83331.1.peg.4047
+MS1103	?	?	?	YgjD_and_YeaZ
+MS0968	Protein Metabolism	Protein biosynthesis	tRNA_aminoacylation,_Ala	Staphylococcus_aureus_hypothetical_repetitive_gene_loci
+MS1325	Phages, Prophages, Transposable elements	Bacteriophage structural proteins	Phage_baseplate_proteins	NA
+MS0298	Clustering-based subsystems	TldD cluster	CBSS-354.1.peg.2917	CBSS-498211.3.peg.1415
+MS1133	Clustering-based subsystems	Clustering-based subsystems	CBSS-280355.3.peg.2835	r1t-like_streptococcal_phages
+MS0612	Protein Metabolism	Protein biosynthesis	tRNA_aminoacylation,_Val	Iron_Scavenging_cluster_in_Thermus
+MS0854	Protein Metabolism	Protein biosynthesis	tRNA_aminoacylation,_Thr	Pyruvate_metabolism_II:_acetyl-CoA,_acetogenesis_from_pyruvate
+MS0889	Nucleosides and Nucleotides	Detoxification	Nucleoside_triphosphate_pyrophosphohydrolase_MazG	Retinol_metabolism
+MS0529	?	?	?	Fructooligosaccharides(FOS)_and_Raffinose_Utilization
+MS0933	Protein Metabolism	Protein biosynthesis	Ribosome_LSU_chloroplast	Siderophore_Aerobactin
+MS1279	Virulence	Iron Scavenging Mechanisms	Iron_siderophore_sensor_&_receptor_system	NA
+MS0857	Dormancy and Sporulation	?	Sporulation_Cluster_III_A	Quinate_degradation
+MS1298	?	?	?	NA
