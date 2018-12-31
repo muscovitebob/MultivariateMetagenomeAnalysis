@@ -14,12 +14,40 @@ The aim of this analysis is to explore the metagenomic dataset assembled by @For
 
 ```{r warning=FALSE, message=FALSE}
 library(tidyverse)
+set.seed(100)
 data = read_tsv("data.r")
-head(data)
+data
 ```
 
-We can see that the dataset consists of six columns. The first is sample IDs, which are not unique keys since every sample may have multiple features. The second is the dataset of origin, which is either Danish (MHD), Swedish (SWE) or Han Chinese (CHN). The third column is treatment status of a particular patient, where they are either healthy (ND CTRL), are having type 2 diabetes treated with metformin included (T2D metformin+), are having type 2 diabetes treated without metformin (T2D metformin-) or are having type 1 diabetes treated (T1D). The fourth column specifies the type of feature in the fifth column. This is either gut microbial/metabolic module (GMM), SEED database annotation, bacterial family, bacterial genus or metagenomic operational taxonomic units (Motu). The fifth column contains the feature names which are coded differently depending on the feature type. Finally, the sixth column contains the abundance of a given feature, this is normalised.
+We can see that the dataset consists of six columns. The first is sample IDs, which are not unique keys since every sample may have multiple features. The second is the dataset of origin, which is either Danish (MHD), Swedish (SWE) or Han Chinese (CHN). The third column is treatment status of a particular patient, where they are either healthy (ND CTRL), are having type 2 diabetes treated with metformin included (T2D metformin+), are having type 2 diabetes treated without metformin (T2D metformin-) or are having type 1 diabetes treated (T1D). The fourth column specifies the type of feature in the fifth column. This is either gut microbial/metabolic module (GMM), SEED database annotation, bacterial family, bacterial genus or metagenomic operational taxonomic units (Motu). The fifth column contains the feature names which are coded differently depending on the feature type. Finally, the sixth column contains the abundance of a given feature.
 
-The feature types are split into two spaces: the taxonomic space represented by the genuses, families and taxonomic units, and the functional space as annotated by SEED and GMM. The full SEED and GMM feature code annotations can be found in the appendix files, taken from Supplementary Table 10 of @Forslund:2015aa.
+The feature types are split into two spaces: the taxonomic space represented by the genuses, families and taxonomic units, and the functional space as annotated by SEED and GMM. The full SEED and GMM feature code annotations can be found in the appendix files, taken from Supplementary Table 10 of @Forslund:2015aa. We are only interested in exploring the structure of the functional space.
+
+```{r}
+functional_space = filter(data, FeatureType %in% c("GMM", "SEED"))
+functional_space
+```
+
+In order to actually perform analysis, we transform the data into the data matrix $X$, with every row being a sample and every column a particular feature. First we combine redundant columns.
+
+```{r}
+united_functional_space = functional_space %>% unite(SampleInfo, Sample, Dataset, Status) %>% unite(FeatureInfo, FeatureType, Feature)
+united_functional_space
+```
+
+```{r}
+X = united_functional_space %>% group_by(FeatureInfo) %>% spread(FeatureInfo, Abundance)
+X
+```
+
+
+## Discriminant analysis
+
+We can attempt to use discriminant analysis to try and build a good predictor for status based on the dataset, features and abundances. First we do 80/20 train-test splitting, followed by normalisation necessary for discriminant analysis.
+
+```{r}
+
+```
+
 
 # Bibliography
