@@ -1,0 +1,12 @@
+---
+title: "Multivariate statistical analysis of metagenomic data"
+author: "Boris Shilov"
+bibliography: "bibliography.bib"
+output:
+  pdf_document: default
+---
+
+```{r}
+
+```
+
