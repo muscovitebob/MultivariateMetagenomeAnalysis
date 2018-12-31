@@ -31,22 +31,32 @@ functional_space
 In order to actually perform analysis, we transform the data into the data matrix $X$, with every row being a sample and every column a particular feature. First we combine redundant columns.
 
 ```{r}
-united_functional_space = functional_space %>% unite(SampleInfo, Sample, Dataset, Status) %>% unite(FeatureInfo, FeatureType, Feature)
-united_functional_space
+united_functional_space = functional_space %>%
+  unite(SampleInfo, Sample, Dataset, Status) %>% 
+  unite(FeatureInfo, FeatureType, Feature)
 ```
 
 ```{r}
 X = united_functional_space %>% group_by(FeatureInfo) %>% spread(FeatureInfo, Abundance)
+```
+
+There is significant missingness in 25 of the individuals, and we exclude them from further analysis.
+
+```{r}
+X = drop_na(X)
 X
 ```
 
+# Analysis
 
-## Discriminant analysis
-
-We can attempt to use discriminant analysis to try and build a good predictor for status based on the dataset, features and abundances. First we do 80/20 train-test splitting, followed by normalisation necessary for discriminant analysis.
+## PCA
 
 ```{r}
-
+library(nFactors)
+eigenvals = eigen(cor(X[-1]))
+eigenvaldist = parallel(subject=nrow(X[-1]), var=ncol(X[-1]), rep=100, cent=0.05)
+nS = nScree(x=eigenvals$values, aparallel=eigenvals$eigen$qevpea)
+plotnScree(nS)
 ```
 
 
