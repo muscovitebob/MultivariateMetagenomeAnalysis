@@ -32,8 +32,8 @@ In order to actually perform analysis, we transform the data into the data matri
 
 ```{r}
 united_functional_space = functional_space %>%
-  unite(SampleInfo, Sample, Dataset, Status) %>% 
-  unite(FeatureInfo, FeatureType, Feature)
+  unite(SampleInfo, Sample, Dataset, Status, sep="~") %>% 
+  unite(FeatureInfo, FeatureType, Feature, sep="~")
 ```
 
 ```{r}
@@ -52,11 +52,53 @@ X
 ## PCA
 
 ```{r}
+train = X %>% sample_frac(0.8)
+test = anti_join(X, train, by="SampleInfo")
+```
+
+
+```{r warning=FALSE, messages=FALSE}
 library(nFactors)
 eigenvals = eigen(cor(X[-1]))
-eigenvaldist = parallel(subject=nrow(X[-1]), var=ncol(X[-1]), rep=100, cent=0.05)
+eigenvaldist = parallel(subject=nrow(X[-1]), var=ncol(X[-1]), rep=100)
 nS = nScree(x=eigenvals$values, aparallel=eigenvals$eigen$qevpea)
 plotnScree(nS)
+```
+
+```{r}
+cov1 = cov(train[-1])
+cor1 = cov2cor(cov1)
+eigens = eigen(cov1)
+PCA1 = prcomp(train[-1], scale=F, center=T)
+pairs(PCA1$x[,1:5])
+```
+
+```{r}
+PCA1_parallel = parallel(subject=nrow(train[-1]), var=ncol(train[-1]), rep=100)
+PCA1_scree = nScree(x=PCA1$sdev^2, aparallel=PCA1_parallel$eigen$qevpea)
+plotnScree(PCA1_scree)
+```
+
+This suggests it would be optimal to retain in the hundreds of components to explain most of the variance. Instead, we can use the Kaiser-Guttman rule to select the first 40 or so components, which explain about 93% - a large reduction in factors in exchange for a small reduction in the explained variance.
+
+```{r}
+PCA2 = prcomp(train[-1], scale=F, center=T, tol=0.07)
+train.df = as.data.frame(train[,-1])
+row.names(train.df) = pull(train, SampleInfo)
+model1scores = as.matrix(train[-1]) %*% as.matrix(PCA2$rotation)
+prediction1 = predict(PCA2, test[-1])
+```
+
+# tSNE
+
+```{r}
+library(Rtsne)
+tsne1 = Rtsne(train[,-1], dims=2, perplexity=30, max_iter=400)
+tSNE1_res = as_tibble(tsne1$Y)
+separated = train[,1] %>% separate(SampleInfo, into=c("Sample", "Dataset", "Status"), sep="~")
+status_vector = separated["Status"]
+tsne_with_status = bind_cols(tSNE1_res, status_vector)
+ggplot(tsne_with_status, aes(x=V1, y=V2,colour=Status)) + geom_point() 
 ```
 
 
