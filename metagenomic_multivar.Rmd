@@ -96,9 +96,12 @@ library(Rtsne)
 tsne1 = Rtsne(train[,-1], dims=2, perplexity=30, max_iter=400)
 tSNE1_res = as_tibble(tsne1$Y)
 separated = train[,1] %>% separate(SampleInfo, into=c("Sample", "Dataset", "Status"), sep="~")
-status_vector = separated["Status"]
-tsne_with_status = bind_cols(tSNE1_res, status_vector)
-ggplot(tsne_with_status, aes(x=V1, y=V2,colour=Status)) + geom_point() 
+tsne_with_additionals = bind_cols(tSNE1_res, separated)
+ggplot(tsne_with_additionals, aes(x=V1, y=V2,colour=Dataset)) + geom_point() 
+```
+
+```{r}
+ggplot(tsne_with_additionals, aes(x=V1, y=V2,colour=Status)) + geom_point() 
 ```
 
 
