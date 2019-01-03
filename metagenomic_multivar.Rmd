@@ -55,6 +55,21 @@ sum(X==0)/(dim(X)[1] * dim(X)[2])
 
 # Analysis
 
+## CoDa
+
+```{r}
+library(zCompositions)
+X.df.transposed = X %>% column_to_rownames("SampleInfo") %>% as.data.frame()
+X.df = t(X.df.transposed)
+X.df.czm = cmultRepl(t(X.df),  label=0, method="CZM")
+X.df.clr = t(apply(X.df.czm, 1, function(x){log(x) - mean(log(x))}))
+annotated_X.clr = bind_cols(separated_X, as.tibble(X.df.clr))
+X.df.clr.PCA = prcomp(X.df.clr)
+PCA.rotation.transpose = t(X.df.clr.PCA$rotation)
+autoplot(X.df.clr.PCA, data=annotated_X.clr, colour="Status", x=2, y=3)
+```
+
+
 ## PCA
 
 ```{r}
@@ -65,6 +80,7 @@ test = anti_join(X, train, by="SampleInfo")
 
 ```{r warning=FALSE, messages=FALSE}
 library(nFactors)
+library(ggfortify)
 eigenvals = eigen(cor(X[-1]))
 eigenvaldist = parallel(subject=nrow(X[-1]), var=ncol(X[-1]), rep=100)
 nS = nScree(x=eigenvals$values, aparallel=eigenvals$eigen$qevpea)
@@ -87,22 +103,17 @@ plotnScree(PCA1_scree)
 This suggests it would be optimal to retain in the hundreds of components to explain most of the variance. Instead, we can use the Kaiser-Guttman rule to select the first 40 or so components, which explain about 93% - a large reduction in factors in exchange for a small reduction in the explained variance.
 
 ```{r}
-PCA2 = prcomp(train[-1], scale=F, center=T, tol=0.07)
-train.df = as.data.frame(train[,-1])
-row.names(train.df) = pull(train, SampleInfo)
-#PCA2scores = as.matrix(train[-1]) %*% as.matrix(PCA2$rotation)
-prediction1 = predict(PCA2, test[-1])
+PCA2 = prcomp(X[-1], scale=F, center=T, tol=0.07)
 ```
 
 ```{r}
 library(GGally)
-separated = train[,1] %>% separate(SampleInfo, into=c("Sample", "Dataset", "Status"), sep="~")
-PCA2_and_desc = bind_cols(as_tibble(PCA2$x), separated)
-ggpairs(PCA2_and_desc, aes(colour=Status), columns=1:7, progress = FALSE)
+PCA2_and_desc = bind_cols(as_tibble(PCA2$x), separated_X)
+ggpairs(PCA2_and_desc, aes(colour=Status), columns=1:5, progress = FALSE)
 ```
 
 ```{r}
-ggpairs(PCA2_and_desc, aes(colour=Dataset), columns=1:7, progress = FALSE)
+ggpairs(PCA2_and_desc, aes(colour=Dataset), columns=1:5, progress = FALSE)
 ```
 
 PCA appears to mostly separate based on the geographical origin rather than clinical status, which is suboptimal.
@@ -131,27 +142,20 @@ It is clear from our previous attempts that running unconstrained ordination on 
 ```{r}
 library(vegan)
 constrainedModel1 = capscale(separated_X[, -c(1,2,3)] ~ Status + Condition(Dataset), data=separated_X)
-constrainedAbundances1 = bind_cols(separated_X[, 1:3],as.tibble(constrainedModel1$Ybar))
-tsne_constrained1 = Rtsne(constrainedAbundances1, dims=2, perplexity=30, max_iter=400)
-tsne_constrained1 = as_tibble(tsne_constrained1$Y)
-tsne_constrained1_with_additionals = bind_cols(separated_X[,1:3], tsne_constrained1)
-ggplot(tsne_constrained1_with_additionals, aes(x=V1, y=V2,colour=Dataset)) + geom_point() 
+constrainedModel1Summary = summary(constrainedModel1)
+ggpairs(as.tibble(constrainedModel1Summary$species), progress = FALSE)
 ```
+
 
 ```{r}
 constrainedModel2 = cca(separated_X[, -c(1,2,3)] ~ Status + Condition(Dataset), data=separated_X)
-constrainedAbundances2 = bind_cols(separated_X[, 1:3],as.tibble(constrainedModel2$Ybar))
-tsne_constrained2 = Rtsne(constrainedAbundances2, dims=2, perplexity=30, max_iter=400)
-tsne_constrained2 = as_tibble(tsne_constrained2$Y)
-tsne_constrained2_with_additionals = bind_cols(separated_X[,1:3], tsne_constrained2)
-ggplot(tsne_constrained2_with_additionals, aes(x=V1, y=V2,colour=Dataset)) + geom_point() 
+constrainedModel2Summary = summary(constrainedModel2)
+ggpairs(as.tibble(constrainedModel2Summary$species), progress = FALSE)
 ```
 
 ```{r}
 ggplot(tsne_constrained2_with_additionals, aes(x=V1, y=V2,colour=Status)) + geom_point() 
 ```
-
-Exploration of a model fitted using Correspondence Analysis via tSNE reveals previously unseen structure in the data that better accounts for clinical status.
 
 ## PCA on constrained data
 
