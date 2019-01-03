@@ -44,8 +44,14 @@ There is significant missingness in 25 of the individuals, and we exclude them f
 
 ```{r}
 X = drop_na(X)
-X
+separated_X = X %>% separate(SampleInfo, into=c("Sample", "Dataset", "Status"), sep="~")
 ```
+
+```{r}
+sum(X==0)/(dim(X)[1] * dim(X)[2])
+```
+
+30% of our matrix is sparse.
 
 # Analysis
 
@@ -92,9 +98,14 @@ prediction1 = predict(PCA2, test[-1])
 library(GGally)
 separated = train[,1] %>% separate(SampleInfo, into=c("Sample", "Dataset", "Status"), sep="~")
 PCA2_and_desc = bind_cols(as_tibble(PCA2$x), separated)
-ggpairs(PCA2_and_desc, aes(colour=Status), columns=1:7)
+ggpairs(PCA2_and_desc, aes(colour=Status), columns=1:7, progress = FALSE)
 ```
 
+```{r}
+ggpairs(PCA2_and_desc, aes(colour=Dataset), columns=1:7, progress = FALSE)
+```
+
+PCA appears to mostly separate based on the geographical origin rather than clinical status, which is suboptimal.
 
 # tSNE
 
@@ -113,16 +124,29 @@ ggplot(tsne_with_additionals, aes(x=V1, y=V2,colour=Status)) + geom_point()
 
 t-Distributed Stochastic Neighbor Embedding is a non-linear dimensionality reduction method. We embed the data into two dimensions. There is very clearly some structure to the data, we see that tSNE mostly discovers the geographic origin, and treatment status does not seem to explain much of the structure.
 
-# Discriminant analysis
+# Constrained ordination
+
+It is clear from our previous attempts that running unconstrained ordination on this dataset merely reveals considerable bias in collection methods accross different country sites, with also perhaps some country-specific structure to the microflora of the patient guts. We are really, however, interested in seeing the clinical structure in this data. Thus we have to substract or account for the collection and geographic bias. We do this using constrained ordination, conditioning on the Dataset variable.
 
 ```{r}
-library(MASS)
-separated_test = test[,1] %>% separate(SampleInfo, into=c("Sample", "Dataset", "Status"), sep="~")
-train_status = bind_cols(train[-1], dplyr::select(separated, Status))
-test_status = bind_cols(test[-1], dplyr::select(separated_test, Status))
-lda1 = lda(Status~., data=train_status)
-predict_lda1 = predict(lda1, test_status)
+library(vegan)
+constrainedModel1 = capscale(separated_X[, -c(1,2,3)] ~ Status + Condition(Dataset), data=separated_X)
+constrainedAbunances1 = bind_cols(separated_X[, 1:3],as.tibble(constrainedModel1$Ybar))
 ```
 
+```{r}
+constrainedModel2 = cca(separated_X[, -c(1,2,3)] ~ Status + Condition(Dataset), data=separated_X)
+constrainedAbundances2 = bind_cols(separated_X[, 1:3],as.tibble(constrainedModel2$Ybar))
+tsne_constrained2 = Rtsne(constrainedAbundances2, dims=2, perplexity=30, max_iter=400)
+tsne_constrained2 = as_tibble(tsne_constrained2$Y)
+tsne_constrained2_with_additionals = bind_cols(separated_X[,1:3], tsne_constrained2)
+ggplot(tsne_constrained2_with_additionals, aes(x=V1, y=V2,colour=Dataset)) + geom_point() 
+```
+
+```{r}
+ggplot(tsne_constrained2_with_additionals, aes(x=V1, y=V2,colour=Status)) + geom_point() 
+```
+
+Exploration using tSNE reveals previously unseen structure in the data that better accounts for clinical status.
 
 # Bibliography
