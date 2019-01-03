@@ -77,16 +77,18 @@ autoplot(prcomp(chinese.norm[,-c(1,2,3)]), data=chinese.norm, colour="Status", x
 X.sumrownormal_united = X.sumrownormal %>% unite(SampleInfo, Sample, Dataset, Status, sep="~") %>% unite(FeatureInfo, FeatureType, Feature, sep="~")
 
 X.sumrownormal_united= X %>% column_to_rownames("SampleInfo") %>% as.data.frame()
-X.df = t(X.sumrownormal_united)
-X.df.czm = cmultRepl(t(X.df),  label=0, method="CZM")
-X.df.clr = t(apply(X.df.czm, 1, function(x){log(x) - mean(log(x))}))
-X.clr = X.df.clr %>% as_tibble(rownames = "SampleInfo") %>% separate(SampleInfo, into=c("Sample", "Dataset", "Status"), sep="~")
+X.sumrownormal.df = t(X.sumrownormal_united)
+X.sumrownormal.df.czm = cmultRepl(t(X.sumrownormal.df),  label=0, method="CZM")
+X.sumrownormal.df.clr = t(apply(X.sumrownormal.df.czm, 1, function(x){log(x) - mean(log(x))}))
+X.sumrownormal.clr = X.sumrownormal.df.clr %>% as_tibble(rownames = "SampleInfo") %>% separate(SampleInfo, into=c("Sample", "Dataset", "Status"), sep="~")
 
-danish.clr = filter(X.clr, Dataset %in% c("MHD"))
-autoplot(prcomp(danish.clr[,-c(1,2,3)]), data=danish.clr, colour="Status", x=1, y=2)
+danish.sumrownormal.clr = filter(X.sumrownormal.clr, Dataset %in% c("MHD"))
+autoplot(prcomp(danish.sumrownormal.clr[,-c(1,2,3)]), data=danish.sumrownormal.clr, colour="Status", x=1, y=2)
 
-swedish.clr = filter(X.clr, Dataset %in% c("SWE"))
-autoplot(prcomp(swedish.clr[,-c(1,2,3)]), data=swedish.clr, colour="Status", x=1, y=2)
+swedish.sumrownormal.clr = filter(X.sumrownormal.clr, Dataset %in% c("SWE"))
+autoplot(prcomp(swedish.sumrownormal.clr[,-c(1,2,3)]), data=swedish.sumrownormal.clr, colour="Status", x=1, y=2)
 
-chinese.clr = filter(X.clr, Dataset %in% c("CHN"))
-autoplot(prcomp(chinese.clr[,-c(1,2,3)]), data=chinese.clr, colour="Status", x=1, y=2)
+chinese.sumrownormal.clr = filter(X.sumrownormal.clr, Dataset %in% c("CHN"))
+autoplot(prcomp(chinese.sumrownormal.clr[,-c(1,2,3)]), data=chinese.sumrownormal.clr, colour="Status", x=1, y=2)
+
+# similar results as if we just log transformed the data, perhaps predictably
