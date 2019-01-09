@@ -8,7 +8,7 @@ output:
 
 # Introduction
 
-The aim of this analysis is to explore the metagenomic dataset assembled by @Forslund:2015aa.
+The aim of this analysis is to explore the functional space of the metagenomic dataset assembled by @Forslund:2015aa. My primary objective here is to determine, using dimensionality reduction and ordination methods, whether there is some structure in the data, and to see whether this structure is in any way associated with the treatment/disease status of the samples, and to do this without taking taxonomic information into account (hence the functional space).
 
 ## Data format
 
@@ -59,6 +59,7 @@ sum(X==0)/(dim(X)[1] * dim(X)[2])
 
 ```{r}
 library(zCompositions)
+library(ggfortify)
 X.df.transposed = X %>% column_to_rownames("SampleInfo") %>% as.data.frame()
 X.df = t(X.df.transposed)
 X.df.czm = cmultRepl(t(X.df),  label=0, method="CZM")
@@ -71,12 +72,6 @@ autoplot(X.df.clr.PCA, data=annotated_X.clr, colour="Status", x=2, y=3)
 
 
 ## PCA
-
-```{r}
-train = X %>% sample_frac(0.8)
-test = anti_join(X, train, by="SampleInfo")
-```
-
 
 ```{r warning=FALSE, messages=FALSE}
 library(nFactors)
@@ -152,11 +147,5 @@ constrainedModel2 = cca(separated_X[, -c(1,2,3)] ~ Status + Condition(Dataset), 
 constrainedModel2Summary = summary(constrainedModel2)
 ggpairs(as.tibble(constrainedModel2Summary$species), progress = FALSE)
 ```
-
-```{r}
-ggplot(tsne_constrained2_with_additionals, aes(x=V1, y=V2,colour=Status)) + geom_point() 
-```
-
-## PCA on constrained data
 
 # Bibliography

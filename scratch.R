@@ -1,6 +1,6 @@
 library(zCompositions)
-
 library(tidyverse)
+library(ggfortify)
 set.seed(100)
 data = read_tsv("data.r")
 
@@ -16,6 +16,11 @@ X = united_functional_space %>% group_by(FeatureInfo) %>% spread(FeatureInfo, Ab
 X = drop_na(X)
 separated_X = X %>% separate(SampleInfo, into=c("Sample", "Dataset", "Status"), sep="~")
 
+# train and test set code if i need it later
+
+train = X %>% sample_frac(0.8)
+test = anti_join(X, train, by="SampleInfo")
+
 # log transform the counts
 
 X.df.transposed = X %>% column_to_rownames("SampleInfo") %>% as.data.frame()
@@ -27,7 +32,7 @@ X.clr = X.df.clr %>% as_tibble(rownames = "SampleInfo") %>% separate(SampleInfo,
 # do a little PCA with the log transformed results
 X.df.clr.PCA = prcomp(X.df.clr)
 PCA.rotation.transpose = t(X.df.clr.PCA$rotation)
-plot(PC1, PC2)
+plot(X.df.clr.PCA)
 
 # without normalising, can we detect any status patterns separately?
 danish = filter(separated_X, Dataset %in% c("MHD"))
@@ -49,7 +54,7 @@ autoplot(prcomp(danish.clr[,-c(1,2,3)]), data=danish.clr, colour="Status", x=1, 
 swedish.clr = filter(X.clr, Dataset %in% c("SWE"))
 autoplot(prcomp(swedish.clr[,-c(1,2,3)]), data=swedish.clr, colour="Status", x=1, y=2)
 
-# here we see an interesting pattern not previously observed - the metformin- is mostly not in PC1, instead being explained by PC2 mostly, and in PC2 it aligns with control subjects. 
+# here in swedish we see an interesting pattern not previously observed - the metformin- is mostly not in PC1, instead being explained by PC2 mostly, and in PC2 it aligns with control subjects. 
 
 chinese.clr = filter(X.clr, Dataset %in% c("CHN"))
 autoplot(prcomp(chinese.clr[,-c(1,2,3)]), data=chinese.clr, colour="Status", x=1, y=2)
@@ -92,3 +97,13 @@ chinese.sumrownormal.clr = filter(X.sumrownormal.clr, Dataset %in% c("CHN"))
 autoplot(prcomp(chinese.sumrownormal.clr[,-c(1,2,3)]), data=chinese.sumrownormal.clr, colour="Status", x=1, y=2)
 
 # similar results as if we just log transformed the data, perhaps predictably
+
+# it seems that log transforming the data is the most interesting way forward
+
+# OK, we carry log transformed forward for ordination analysis via dbRDA
+
+library(vegan)
+constrainedModel3 = capscale(X.clr[, -c(1,2,3)] ~ Status + Condition(Dataset), data=X.clr, method="canberra")
+constrainedModel3Summary = summary(constrainedModel1)
+ggpairs(as.tibble(constrainedModel3Summary$species), progress = FALSE)
+
