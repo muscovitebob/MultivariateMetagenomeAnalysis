@@ -99,6 +99,7 @@ autoplot(prcomp(chinese.sumrownormal.clr[,-c(1,2,3)]), data=chinese.sumrownormal
 # similar results as if we just log transformed the data, perhaps predictably
 
 # it seems that log transforming the data is the most interesting way forward
+# also the data has already been normalised before so the normalisation steps were spurious
 
 # OK, we carry log transformed forward for ordination analysis via dbRDA
 

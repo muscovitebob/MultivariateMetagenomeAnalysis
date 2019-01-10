@@ -27,15 +27,12 @@ functional_space = filter(data, FeatureType %in% c("GMM", "SEED"))
 functional_space
 ```
 
-In order to actually perform analysis, we transform the data into the data matrix $X$, with every row being a sample and every column a particular feature. First we combine redundant columns.
+In order to actually perform analysis, we transform the data into the data matrix $X$, with every row being a sample and every column a particular feature. First we combine redundant columns. Some ecological statistical functions will assume the transpose of this format, so we will stick to using a data frame after our initial processing here - tibbles are not transposed easily due to not implementng row names.
 
 ```{r}
 united_functional_space = functional_space %>%
   unite(SampleInfo, Sample, Dataset, Status, sep="~") %>% 
   unite(FeatureInfo, FeatureType, Feature, sep="~")
-```
-
-```{r}
 X = united_functional_space %>% group_by(FeatureInfo) %>% spread(FeatureInfo, Abundance)
 ```
 
@@ -44,6 +41,7 @@ There is significant missingness in 25 of the individuals, and we exclude them f
 ```{r}
 X = drop_na(X)
 separated_X = X %>% separate(SampleInfo, into=c("Sample", "Dataset", "Status"), sep="~")
+X.df = X %>% column_to_rownames("SampleInfo") %>% as.data.frame()
 ```
 
 ```{r}
@@ -54,80 +52,67 @@ sum(X==0)/(dim(X)[1] * dim(X)[2])
 
 # Analysis
 
-## CoDa
+## Log transformation of the data
+
+As we have an abudance matrix, we need to transform the data to be linear. We can do this using a log transformation, in particular the centered log ratio transform. In order to log transform, we first need to get rid of the zeroes, which we use Bayesian multiplicative replacement for. Normally we would have to normalise and filter the data for low-abundance samples, but this has already been done for us.
 
 ```{r}
 library(zCompositions)
-library(ggfortify)
-X.df.transposed = X %>% column_to_rownames("SampleInfo") %>% as.data.frame()
-X.df = t(X.df.transposed)
-X.df.czm = cmultRepl(t(X.df),  label=0, method="CZM")
-X.df.clr = t(apply(X.df.czm, 1, function(x){log(x) - mean(log(x))}))
-annotated_X.clr = bind_cols(separated_X, as.tibble(X.df.clr))
-X.df.clr.PCA = prcomp(X.df.clr)
-PCA.rotation.transpose = t(X.df.clr.PCA$rotation)
-autoplot(X.df.clr.PCA, data=annotated_X.clr, colour="Status", x=2, y=3)
+X.df.czm = cmultRepl(X.df,  label=0, method="CZM")
+X.df.clr = t(apply(X.df.czm, 1, function(x) {log(x) - mean(log(x))} ))
+annotated_X.clr = bind_cols(separated_X[1:3], as.tibble(X.df.clr))
 ```
-
 
 ## PCA
 
-```{r warning=FALSE, messages=FALSE}
-library(nFactors)
+We can attempt PCA on the transformed data. We scale to unit variance.
+
+```{r messages=FALSE}
 library(ggfortify)
-eigenvals = eigen(cor(X[-1]))
-eigenvaldist = parallel(subject=nrow(X[-1]), var=ncol(X[-1]), rep=100)
-nS = nScree(x=eigenvals$values, aparallel=eigenvals$eigen$qevpea)
-plotnScree(nS)
-```
-
-```{r}
-cov1 = cov(train[-1])
-cor1 = cov2cor(cov1)
-eigens = eigen(cov1)
-PCA1 = prcomp(train[-1], scale=F, center=T)
-```
-
-```{r}
-PCA1_parallel = parallel(subject=nrow(train[-1]), var=ncol(train[-1]), rep=100)
-PCA1_scree = nScree(x=PCA1$sdev^2, aparallel=PCA1_parallel$eigen$qevpea)
-plotnScree(PCA1_scree)
-```
-
-This suggests it would be optimal to retain in the hundreds of components to explain most of the variance. Instead, we can use the Kaiser-Guttman rule to select the first 40 or so components, which explain about 93% - a large reduction in factors in exchange for a small reduction in the explained variance.
-
-```{r}
-PCA2 = prcomp(X[-1], scale=F, center=T, tol=0.07)
-```
-
-```{r}
+library(nFactors)
 library(GGally)
-PCA2_and_desc = bind_cols(as_tibble(PCA2$x), separated_X)
-ggpairs(PCA2_and_desc, aes(colour=Status), columns=1:5, progress = FALSE)
+X.df.clr.PCA1 = prcomp(X.df.clr, scale=T)
+autoplot(X.df.clr.PCA1, data=annotated_X.clr, colour="Status", x=1, y=2)
+```
+
+We can see that the first component accounts for a lot of variance. It would be informative to attempt parallel analysis to determine the number of principal components to retain. This technique is a formalisation of the Scree plot and works by simulating a random data frame with the same number of of samples and variables as in the original data frame, computing a correlation matrix for this random d.f. We use the eigenvalues from this simulation to decide if the components in our real analysis are likely to be random noise.
+
+```{r}
+parallelAnal1 = parallel(subject=nrow(X.df.clr), var=ncol(X.df.clr), rep=100)
+screeTest1 = nScree(x=eigen(cor(X.df.clr))$values, aparallel=parallelAnal1$eigen$qevpea)
+plotnScree(screeTest1)
+```
+
+This analysis suggests around 16 components would capture most of the non-random variability. We can plot at least the first few components against each other more or less coherently.
+
+```{r}
+PCA1_and_desc = bind_cols(as_tibble(X.df.clr.PCA1$x), separated_X[1:3])
+ggpairs(PCA1_and_desc, aes(colour=Status), columns=1:7, progress = FALSE)
 ```
 
 ```{r}
-ggpairs(PCA2_and_desc, aes(colour=Dataset), columns=1:5, progress = FALSE)
+ggpairs(PCA1_and_desc, aes(colour=Dataset), columns=1:7, progress = FALSE)
 ```
 
-PCA appears to mostly separate based on the geographical origin rather than clinical status, which is suboptimal.
+# Non-Metric Multidimensional Scaling
+
+
 
 # tSNE
 
+t-Distributed Stochastic Neighbor Embedding is a non-linear dimensionality reduction method. We embed the data into two dimensions.
+
 ```{r}
 library(Rtsne)
-tsne1 = Rtsne(train[,-1], dims=2, perplexity=30, max_iter=400)
+tsne1 = Rtsne(X, dims=2, perplexity=30, max_iter=400)
 tSNE1_res = as_tibble(tsne1$Y)
-separated = train[,1] %>% separate(SampleInfo, into=c("Sample", "Dataset", "Status"), sep="~")
-tsne_with_additionals = bind_cols(tSNE1_res, separated)
+tsne_with_additionals = bind_cols(tSNE1_res, separated_X[1:3])
 ggplot(tsne_with_additionals, aes(x=V1, y=V2,colour=Dataset)) + geom_point() 
 ```
 
 ```{r}
 ggplot(tsne_with_additionals, aes(x=V1, y=V2,colour=Status)) + geom_point() 
 ```
-
-t-Distributed Stochastic Neighbor Embedding is a non-linear dimensionality reduction method. We embed the data into two dimensions. There is very clearly some structure to the data, we see that tSNE mostly discovers the geographic origin, and treatment status does not seem to explain much of the structure.
 
 # Constrained ordination
 
