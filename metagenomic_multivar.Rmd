@@ -13,6 +13,7 @@ The aim of this analysis is to explore the functional space of the metagenomic d
 ## Data format
 
 ```{r warning=FALSE, message=FALSE}
+library(cowplot)
 library(tidyverse)
 set.seed(100)
 data = read_tsv("data.r")
@@ -29,7 +30,7 @@ functional_space
 
 In order to actually perform analysis, we transform the data into the data matrix $X$, with every row being a sample and every column a particular feature. First we combine redundant columns. Some ecological statistical functions will assume the transpose of this format, so we will stick to using a data frame after our initial processing here - tibbles are not transposed easily due to not implementng row names.
 
-```{r}
+```{r messages=FALSE, warning=FALSE}
 united_functional_space = functional_space %>%
   unite(SampleInfo, Sample, Dataset, Status, sep="~") %>% 
   unite(FeatureInfo, FeatureType, Feature, sep="~")
@@ -38,7 +39,7 @@ X = united_functional_space %>% group_by(FeatureInfo) %>% spread(FeatureInfo, Ab
 
 There is significant missingness in 25 of the individuals, and we exclude them from further analysis.
 
-```{r}
+```{r messages=FALSE, warning=FALSE}
 X = drop_na(X)
 separated_X = X %>% separate(SampleInfo, into=c("Sample", "Dataset", "Status"), sep="~")
 X.df = X %>% column_to_rownames("SampleInfo") %>% as.data.frame()
@@ -96,40 +97,38 @@ ggpairs(PCA1_and_desc, aes(colour=Dataset), columns=1:7, progress = FALSE)
 
 # Non-Metric Multidimensional Scaling
 
+We use the Canberra distance, a weighted Manhattan distance.
+
+```{r messages=FALSE, echo=F}
+library(vegan)
+mds1 = metaMDS(t(X.df), k=2, trymax=50, distance="canberra")
+mds1_results = as.tibble(mds1$species, rownames="SampleInfo")
+mds1_results_separated = mds1_results %>% separate(SampleInfo, into=c("Sample", "Dataset", "Status"), sep="~")
+```
+
+```{r}
+ggplot(mds1_results_separated, aes(x=MDS1, y=MDS2,colour=Status)) + geom_point() 
+```
+
+## Correspondence analysis
+
+```{r}
+cca1 = cca(t(X.df))
+```
 
 
-# tSNE
+## tSNE
 
-t-Distributed Stochastic Neighbor Embedding is a non-linear dimensionality reduction method. We embed the data into two dimensions.
+t-Distributed Stochastic Neighbor Embedding is a non-linear dimensionality reduction method that has demonstrated good performance in practice. We embed the data into two dimensions.
 
 ```{r}
 library(Rtsne)
 tsne1 = Rtsne(X, dims=2, perplexity=30, max_iter=400)
 tSNE1_res = as_tibble(tsne1$Y)
 tsne_with_additionals = bind_cols(tSNE1_res, separated_X[1:3])
-ggplot(tsne_with_additionals, aes(x=V1, y=V2,colour=Dataset)) + geom_point() 
-```
-
-```{r}
-ggplot(tsne_with_additionals, aes(x=V1, y=V2,colour=Status)) + geom_point() 
-```
-
-# Constrained ordination
-
-It is clear from our previous attempts that running unconstrained ordination on this dataset merely reveals considerable bias in collection methods accross different country sites, with also perhaps some country-specific structure to the microflora of the patient guts. We are really, however, interested in seeing the clinical structure in this data. Thus we have to substract or account for the collection and geographic bias. We do this using constrained ordination, conditioning on the Dataset variable.
-
-```{r}
-library(vegan)
-constrainedModel1 = capscale(separated_X[, -c(1,2,3)] ~ Status + Condition(Dataset), data=separated_X)
-constrainedModel1Summary = summary(constrainedModel1)
-ggpairs(as.tibble(constrainedModel1Summary$species), progress = FALSE)
-```
-
-
-```{r}
-constrainedModel2 = cca(separated_X[, -c(1,2,3)] ~ Status + Condition(Dataset), data=separated_X)
-constrainedModel2Summary = summary(constrainedModel2)
-ggpairs(as.tibble(constrainedModel2Summary$species), progress = FALSE)
+tsneDataset = ggplot(tsne_with_additionals, aes(x=V1, y=V2,colour=Dataset)) + geom_point() 
+tsneStatus = ggplot(tsne_with_additionals, aes(x=V1, y=V2,colour=Status)) + geom_point()
+plot_grid(tsneDataset, tsneStatus, labels = "AUTO")
 ```
 
 # Bibliography

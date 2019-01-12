@@ -28,11 +28,12 @@ X.df = t(X.df.transposed)
 X.df.czm = cmultRepl(t(X.df),  label=0, method="CZM")
 X.df.clr = t(apply(X.df.czm, 1, function(x){log(x) - mean(log(x))}))
 X.clr = X.df.clr %>% as_tibble(rownames = "SampleInfo") %>% separate(SampleInfo, into=c("Sample", "Dataset", "Status"), sep="~")
+X.clr.abundances = X.clr[,-c(1,2,3)]
+annotated_X.clr = bind_cols(separated_X[1:3], as.tibble(X.df.clr))
 
 # do a little PCA with the log transformed results
 X.df.clr.PCA = prcomp(X.df.clr)
-PCA.rotation.transpose = t(X.df.clr.PCA$rotation)
-plot(X.df.clr.PCA)
+autoplot(X.df.clr.PCA, data=annotated_X.clr, colour="Status", x=1, y=2)
 
 # without normalising, can we detect any status patterns separately?
 danish = filter(separated_X, Dataset %in% c("MHD"))
@@ -104,7 +105,46 @@ autoplot(prcomp(chinese.sumrownormal.clr[,-c(1,2,3)]), data=chinese.sumrownormal
 # OK, we carry log transformed forward for ordination analysis via dbRDA
 
 library(vegan)
-constrainedModel3 = capscale(X.clr[, -c(1,2,3)] ~ Status + Condition(Dataset), data=X.clr, method="canberra")
-constrainedModel3Summary = summary(constrainedModel1)
-ggpairs(as.tibble(constrainedModel3Summary$species), progress = FALSE)
+constrainedModel1 = capscale(separated_X[, -c(1,2,3)] ~ Status + Condition(Dataset), data=separated_X, method="canberra")
+constrainedModel1Summary = summary(constrainedModel1)
+CAP1_results = bind_cols(separated_X[,1:3],as.tibble(constrainedModel1$Ybar))
+ggplot(CAP1_results, aes(x=Dim1, y=Dim2,colour=Status)) + geom_point() 
 
+constrainedModel3 = capscale(X.clr.abundances ~ Status + Condition(Dataset), data=X.clr, distance="canberra")
+constrainedModel3Summary = summary(constrainedModel3)
+CAP3_results = bind_cols(X.clr[,1:3],as.tibble(constrainedModel3$Ybar))
+ggplot(CAP3_results, aes(x=Dim1, y=Dim2,colour=Status)) + geom_point() 
+
+# what if we try the origin dataset format instead of the abundance matrix?
+
+constrainedModel4 = capscale(Abundance ~ Status + Condition(Dataset), data=functional_space)
+# this is too memory intensive to be viable
+
+constrainedModel5 = capscale(separated_X[,-c(1,2,3)] ~ Status + Dataset, data=separated_X, distance="canberra")
+CAP5_results = bind_cols(separated_X[,1:3],as.tibble(constrainedModel5$Ybar))
+ggplot(CAP5_results, aes(x=Dim1, y=Dim2,colour=Status)) + geom_point() 
+
+constrainedModel6 = capscale(X.clr.abundances ~ Status + Dataset, data=X.clr, distance="canberra")
+CAP6_results = bind_cols(X.clr[,1:3],as.tibble(constrainedModel6$Ybar))
+ggplot(CAP6_results, aes(x=Dim1, y=Dim2,colour=Status)) + geom_point() 
+
+constrainedModel7 = capscale(X.clr.abundances ~ Condition(Status), data=X.clr, distance="canberra")
+constrainedModel7Summary = summary(constrainedModel3)
+CAP7_results = bind_cols(X.clr[,1:3],as.tibble(constrainedModel7$Ybar))
+ggplot(CAP7_results, aes(x=Dim1, y=Dim2,colour=Status)) + geom_point()
+
+# what about k means clustering
+
+library(cluster) 
+library(factoextra)
+fourMeansLog = kmeans(X.clr.abundances, centers=4)
+# this plotter does PCA and colours points in PCA by cluster
+fviz_cluster(fourMeansLog, data=X.clr.abundances)
+# these clusters are not very convincing
+fviz_nbclust(X.clr.abundances, kmeans, method="silhouette")
+# apparently two clusters are the best but this doesnt really correspond to what we want - which is discrimination by clinical status, of which there are four levels
+# if we look back to the PCA plot coloured by Status or Dataset we can clearly see that kmeans actually does a pretty solid job of identifying MHD and SWE as separate Datasets. It's even pretty good at seeing CHN as a separate cloud. Nothing to do with clinical status, though.
+
+fourMeans = kmeans(X[-1], centers=4)
+fviz_cluster(fourMeans, data=X[-1])
+# produces complete garbage
