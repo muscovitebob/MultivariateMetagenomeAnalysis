@@ -15,7 +15,7 @@ X = united_functional_space %>% group_by(FeatureInfo) %>% spread(FeatureInfo, Ab
 
 X = drop_na(X)
 separated_X = X %>% separate(SampleInfo, into=c("Sample", "Dataset", "Status"), sep="~")
-
+X.df = X %>% column_to_rownames("SampleInfo") %>% as.data.frame()
 # train and test set code if i need it later
 
 train = X %>% sample_frac(0.8)
@@ -23,12 +23,9 @@ test = anti_join(X, train, by="SampleInfo")
 
 # log transform the counts
 
-X.df.transposed = X %>% column_to_rownames("SampleInfo") %>% as.data.frame()
-X.df = t(X.df.transposed)
-X.df.czm = cmultRepl(t(X.df),  label=0, method="CZM")
-X.df.clr = t(apply(X.df.czm, 1, function(x){log(x) - mean(log(x))}))
-X.clr = X.df.clr %>% as_tibble(rownames = "SampleInfo") %>% separate(SampleInfo, into=c("Sample", "Dataset", "Status"), sep="~")
-X.clr.abundances = X.clr[,-c(1,2,3)]
+library(zCompositions)
+X.df.czm = cmultRepl(X.df,  label=0, method="CZM")
+X.df.clr = t(apply(X.df.czm, 1, function(x) {log(x) - mean(log(x))} ))
 annotated_X.clr = bind_cols(separated_X[1:3], as.tibble(X.df.clr))
 
 # do a little PCA with the log transformed results
@@ -107,13 +104,14 @@ autoplot(prcomp(chinese.sumrownormal.clr[,-c(1,2,3)]), data=chinese.sumrownormal
 library(vegan)
 constrainedModel1 = capscale(separated_X[, -c(1,2,3)] ~ Status + Condition(Dataset), data=separated_X, method="canberra")
 constrainedModel1Summary = summary(constrainedModel1)
-CAP1_results = bind_cols(separated_X[,1:3],as.tibble(constrainedModel1$Ybar))
-ggplot(CAP1_results, aes(x=Dim1, y=Dim2,colour=Status)) + geom_point() 
+CAP1_results=bind_cols(annotated_X.clr[,1:3],as.tibble(scores(constrainedModel1)$sites))
+ggplot(CAP1_results, aes(x=CAP1, y=CAP2,colour=Status)) + geom_point() 
 
-constrainedModel3 = capscale(X.clr.abundances ~ Status + Condition(Dataset), data=X.clr, distance="canberra")
+constrainedModel3 = capscale(X.df.clr~ Status + Condition(Dataset), data=annotated_X.clr, distance="canberra")
 constrainedModel3Summary = summary(constrainedModel3)
-CAP3_results = bind_cols(X.clr[,1:3],as.tibble(constrainedModel3$Ybar))
-ggplot(CAP3_results, aes(x=Dim1, y=Dim2,colour=Status)) + geom_point() 
+CAP3_results=bind_cols(annotated_X.clr[,1:3],as.tibble(scores(constrainedModel3)$sites))
+ggplot(CAP3_results, aes(x=CAP1, y=CAP2,colour=Status)) + geom_point() 
+anova(constrainedModel3, by="terms")
 
 # what if we try the origin dataset format instead of the abundance matrix?
 
@@ -124,13 +122,13 @@ constrainedModel5 = capscale(separated_X[,-c(1,2,3)] ~ Status + Dataset, data=se
 CAP5_results = bind_cols(separated_X[,1:3],as.tibble(constrainedModel5$Ybar))
 ggplot(CAP5_results, aes(x=Dim1, y=Dim2,colour=Status)) + geom_point() 
 
-constrainedModel6 = capscale(X.clr.abundances ~ Status + Dataset, data=X.clr, distance="canberra")
-CAP6_results = bind_cols(X.clr[,1:3],as.tibble(constrainedModel6$Ybar))
+constrainedModel6 = capscale(X.df.clr ~ Status + Dataset, data=annotated_X.clr, distance="canberra")
+CAP6_results = bind_cols(annotated_X.clr[,1:3],as.tibble(constrainedModel6$Ybar))
 ggplot(CAP6_results, aes(x=Dim1, y=Dim2,colour=Status)) + geom_point() 
 
-constrainedModel7 = capscale(X.clr.abundances ~ Condition(Status), data=X.clr, distance="canberra")
+constrainedModel7 = capscale(X.df.clr ~ Condition(Status), data=annotated_X.clr, distance="canberra")
 constrainedModel7Summary = summary(constrainedModel3)
-CAP7_results = bind_cols(X.clr[,1:3],as.tibble(constrainedModel7$Ybar))
+CAP7_results = bind_cols(annotated_X.clr[,1:3],as.tibble(constrainedModel7$Ybar))
 ggplot(CAP7_results, aes(x=Dim1, y=Dim2,colour=Status)) + geom_point()
 
 # what about k means clustering
@@ -148,3 +146,14 @@ fviz_nbclust(X.clr.abundances, kmeans, method="silhouette")
 fourMeans = kmeans(X[-1], centers=4)
 fviz_cluster(fourMeans, data=X[-1])
 # produces complete garbage
+
+# tsne quick and dirty
+library(Rtsne)
+tsne1 = Rtsne(X, dims=2, perplexity=30, max_iter=400)
+tSNE1_res = as_tibble(tsne1$Y)
+tsne_with_additionals = bind_cols(tSNE1_res, separated_X[1:3])
+tsneDataset = ggplot(tsne_with_additionals, aes(x=V1, y=V2,colour=Dataset)) + geom_point() 
+tsneStatus = ggplot(tsne_with_additionals, aes(x=V1, y=V2,colour=Status)) + geom_point()
+plot_grid(tsneDataset, tsneStatus, labels = "AUTO")
+
+# confirm that mostly the structure is in Dataset

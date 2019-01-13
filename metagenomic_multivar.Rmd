@@ -1,9 +1,12 @@
 ---
 title: "Multivariate statistical analysis of metagenomic data"
 author: "Boris Shilov"
+date: '`r format(Sys.time(), "%d %B, %Y")`'
 bibliography: "bibliography.bib"
 output:
-  pdf_document: default
+  pdf_document:
+    fig_width: 6 
+    fig_height: 2 
 ---
 
 # Introduction
@@ -19,16 +22,16 @@ set.seed(100)
 data = read_tsv("data.r")
 ```
 
-The dataset consists of six columns. The first is sample IDs, which are not unique keys since every sample may have multiple features. The second is the dataset of origin, which is either Danish (MHD), Swedish (SWE) or Han Chinese (CHN). The third column is treatment status of a particular patient, where they are either healthy (ND CTRL), are having type 2 diabetes treated with metformin included (T2D metformin+), are having type 2 diabetes treated without metformin (T2D metformin-) or are having type 1 diabetes treated (T1D). The fourth column specifies the type of feature in the fifth column. This is either gut microbial/metabolic module (GMM), SEED database annotation, bacterial family, bacterial genus or metagenomic operational taxonomic units (Motu). The fifth column contains the feature names which are coded differently depending on the feature type. Finally, the sixth column contains the abundance of a given feature.
+The dataset consists of six columns. The first is sample IDs, which are not unique keys since every sample may have multiple features. The second is the dataset of origin, which is either Danish (MHD), Swedish (SWE) or Han Chinese (CHN). The third column is treatment status of a particular patient, where they are either healthy (ND CTRL), are having type 2 diabetes treated with metformin included (T2D metformin+), are having type 2 diabetes treated without metformin (T2D metformin-) or are having type 1 diabetes treated (T1D). The fourth column specifies the type of feature in the fifth column. This is either gut microbial/metabolic module (GMM), SEED database annotation, bacterial family, bacterial genus or metagenomic operational taxonomic units (Motu). The fifth column contains the feature names which are coded differently depending on the feature type. Finally, the sixth column contains the abundance of a given feature, normalised and filtered from low-abundance samples..
 
-The feature types are split into two spaces: the taxonomic space represented by the genuses, families and taxonomic units, and the functional space as annotated by SEED and GMM. The full SEED and GMM feature code annotations can be found in the appendix files, taken from Supplementary Table 10 of @Forslund:2015aa. We are only interested in exploring the structure of the functional space.
+The feature types are split into two spaces: the taxonomic space represented by the genuses, families and taxonomic units, and the functional space as annotated by SEED and GMM. The full SEED and GMM feature code annotations can be found in the appendix files, taken from Supplementary Table 10 of @Forslund:2015aa. I am only interested in exploring the structure of the functional space.
 
 ```{r}
 functional_space = filter(data, FeatureType %in% c("GMM", "SEED"))
 functional_space
 ```
 
-In order to actually perform analysis, we transform the data into the data matrix $X$, with every row being a sample and every column a particular feature. First we combine redundant columns. Some ecological statistical functions will assume the transpose of this format, so we will stick to using a data frame after our initial processing here - tibbles are not transposed easily due to not implementng row names.
+In order to perform analysis, I transform the data into the data matrix $X$, with every row being a sample and every column a particular feature. First I combine redundant columns. Some ecological statistical functions will assume the transpose of this format, so I will stick to using a data frame after initial processing here - tibbles are not transposed easily due to not implementng row names. This is known as a community or abundance matrix in ecology.
 
 ```{r messages=FALSE, warning=FALSE}
 united_functional_space = functional_space %>%
@@ -57,7 +60,7 @@ sum(X==0)/(dim(X)[1] * dim(X)[2])
 
 As we have an abudance matrix, we need to transform the data to be linear. We can do this using a log transformation, in particular the centered log ratio transform. In order to log transform, we first need to get rid of the zeroes, which we use Bayesian multiplicative replacement for. Normally we would have to normalise and filter the data for low-abundance samples, but this has already been done for us.
 
-```{r}
+```{r warning=FALSE, message=FALSE}
 library(zCompositions)
 X.df.czm = cmultRepl(X.df,  label=0, method="CZM")
 X.df.clr = t(apply(X.df.czm, 1, function(x) {log(x) - mean(log(x))} ))
@@ -66,17 +69,24 @@ annotated_X.clr = bind_cols(separated_X[1:3], as.tibble(X.df.clr))
 
 ## PCA
 
-We can attempt PCA on the transformed data. We scale to unit variance.
+I attempt PCA on the transformed data, scaling to unit variance.
 
-```{r messages=FALSE}
+```{r warning=FALSE, message=FALSE, echo=TRUE}
 library(ggfortify)
 library(nFactors)
 library(GGally)
 X.df.clr.PCA1 = prcomp(X.df.clr, scale=T)
+```
+
+```{r}
 autoplot(X.df.clr.PCA1, data=annotated_X.clr, colour="Status", x=1, y=2)
 ```
 
-We can see that the first component accounts for a lot of variance. It would be informative to attempt parallel analysis to determine the number of principal components to retain. This technique is a formalisation of the Scree plot and works by simulating a random data frame with the same number of of samples and variables as in the original data frame, computing a correlation matrix for this random d.f. We use the eigenvalues from this simulation to decide if the components in our real analysis are likely to be random noise.
+```{r}
+autoplot(X.df.clr.PCA1, data=annotated_X.clr, colour="Dataset", x=1, y=2)
+```
+
+The first component accounts for a lot of variance. It would be informative to attempt parallel analysis to determine the number of principal components to retain. This technique is a formalisation of the Scree plot and works by simulating a random data frame with the same number of of samples and variables as in the original data frame, computing a correlation matrix for this random d.f. We use the eigenvalues from this simulation to decide if the components in our real analysis are likely to be random noise.
 
 ```{r}
 parallelAnal1 = parallel(subject=nrow(X.df.clr), var=ncol(X.df.clr), rep=100)
@@ -84,22 +94,13 @@ screeTest1 = nScree(x=eigen(cor(X.df.clr))$values, aparallel=parallelAnal1$eigen
 plotnScree(screeTest1)
 ```
 
-This analysis suggests around 16 components would capture most of the non-random variability. We can plot at least the first few components against each other more or less coherently.
+This analysis suggests around 16 components would capture most of the non-random variability.
 
-```{r}
-PCA1_and_desc = bind_cols(as_tibble(X.df.clr.PCA1$x), separated_X[1:3])
-ggpairs(PCA1_and_desc, aes(colour=Status), columns=1:7, progress = FALSE)
-```
+## Non-Metric Multidimensional Scaling
 
-```{r}
-ggpairs(PCA1_and_desc, aes(colour=Dataset), columns=1:7, progress = FALSE)
-```
+I use the Canberra distance, a weighted Manhattan distance, as originally suggested by @Forslund:2015aa. metaMDS required original community matrices and does not accept negative values, hence we do not use the log transformed matrix.
 
-# Non-Metric Multidimensional Scaling
-
-We use the Canberra distance, a weighted Manhattan distance.
-
-```{r messages=FALSE, echo=F}
+```{r message=FALSE, echo=TRUE, warning=FALSE, results='hide'}
 library(vegan)
 mds1 = metaMDS(t(X.df), k=2, trymax=50, distance="canberra")
 mds1_results = as.tibble(mds1$species, rownames="SampleInfo")
@@ -110,25 +111,37 @@ mds1_results_separated = mds1_results %>% separate(SampleInfo, into=c("Sample", 
 ggplot(mds1_results_separated, aes(x=MDS1, y=MDS2,colour=Status)) + geom_point() 
 ```
 
-## Correspondence analysis
+Unfortunately there is no convergence, so I cap the number of runs at 50.
 
-```{r}
-cca1 = cca(t(X.df))
+## k-Means Clustering
+
+I am interested in finding four clinical groups, hence I specify four clusters to be found via k-Means. I then visualise the clusters in two dimensions using a PCA.
+
+```{r warning=FALSE, message=FALSE}
+library(cluster) 
+library(factoextra)
+fourMeansLog = kmeans(X.df.clr, centers=4)
+fviz_cluster(fourMeansLog, data=X.df.clr, geom="point")
 ```
 
+## Canonical Analysis of Principal Coordinates
 
-## tSNE
+It should perhaps be possible to account for the considerable batch effect (as seen in the Dataset variable correlating with most of the observed structure) by conditioning on Dataset in a constrained ordination.
 
-t-Distributed Stochastic Neighbor Embedding is a non-linear dimensionality reduction method that has demonstrated good performance in practice. We embed the data into two dimensions.
-
-```{r}
-library(Rtsne)
-tsne1 = Rtsne(X, dims=2, perplexity=30, max_iter=400)
-tSNE1_res = as_tibble(tsne1$Y)
-tsne_with_additionals = bind_cols(tSNE1_res, separated_X[1:3])
-tsneDataset = ggplot(tsne_with_additionals, aes(x=V1, y=V2,colour=Dataset)) + geom_point() 
-tsneStatus = ggplot(tsne_with_additionals, aes(x=V1, y=V2,colour=Status)) + geom_point()
-plot_grid(tsneDataset, tsneStatus, labels = "AUTO")
+```{r warning=FALSE, messages=FALSE}
+constrainedModel3 = capscale(X.df.clr~ Status + Condition(Dataset),
+                             data=annotated_X.clr, distance="canberra")
+constrainedModel3Summary = summary(constrainedModel3)
+CAP3_results=bind_cols(annotated_X.clr[,1:3],as.tibble(scores(constrainedModel3)$sites))
+ggplot(CAP3_results, aes(x=CAP1, y=CAP2,colour=Status)) + geom_point()
 ```
+
+# Conclusion
+
+It is quite easy to see that there is indeed structure in this community matrix. It is perhaps not unexpected that ecology would exert some pressure on the SEED and GMM genetic elements. Despite my best efforts, I have been unable to correlate this structure with clinical status. The PCA clearly reveals Dataset structure, but not Status. Multidimensional scaling creates a very neat separation - on Dataset, however it does not converge. 4-means clustering reveals clusters that roughly correspond to separate Dataset levels on the PCA. To my surprise, even implementing a constrained ordination did not reveal non-random clinical Status structure between the CAPs, despite the fact that I conditioned on the Dataset of origin.
+
+This was to be expected, to some extent. Microbiome data is quite infamous for having strong batch effects merely from contamination during sample handling alone. Here, the Dataset variable reflected different collection centers, so this played a role. In addition to that, even in these collection centers, samples were taken from individuals of vastly different demographics, differing in age, sex, ethnicity, and other important variables that have not been provided. It is highly likely that the Dataset is so important because all of these have an influence.
+
+I must cautiously conclude that, given my present knowledge, I cannot discern any association between the genetic structure of the microbiome and diabetes status.
 
 # Bibliography
