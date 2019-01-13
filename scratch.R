@@ -107,29 +107,10 @@ constrainedModel1Summary = summary(constrainedModel1)
 CAP1_results=bind_cols(annotated_X.clr[,1:3],as.tibble(scores(constrainedModel1)$sites))
 ggplot(CAP1_results, aes(x=CAP1, y=CAP2,colour=Status)) + geom_point() 
 
-constrainedModel3 = capscale(X.df.clr~ Status + Condition(Dataset), data=annotated_X.clr, distance="canberra")
-constrainedModel3Summary = summary(constrainedModel3)
-CAP3_results=bind_cols(annotated_X.clr[,1:3],as.tibble(scores(constrainedModel3)$sites))
-ggplot(CAP3_results, aes(x=CAP1, y=CAP2,colour=Status)) + geom_point() 
-anova(constrainedModel3, by="terms")
-
 # what if we try the origin dataset format instead of the abundance matrix?
 
 constrainedModel4 = capscale(Abundance ~ Status + Condition(Dataset), data=functional_space)
 # this is too memory intensive to be viable
-
-constrainedModel5 = capscale(separated_X[,-c(1,2,3)] ~ Status + Dataset, data=separated_X, distance="canberra")
-CAP5_results = bind_cols(separated_X[,1:3],as.tibble(constrainedModel5$Ybar))
-ggplot(CAP5_results, aes(x=Dim1, y=Dim2,colour=Status)) + geom_point() 
-
-constrainedModel6 = capscale(X.df.clr ~ Status + Dataset, data=annotated_X.clr, distance="canberra")
-CAP6_results = bind_cols(annotated_X.clr[,1:3],as.tibble(constrainedModel6$Ybar))
-ggplot(CAP6_results, aes(x=Dim1, y=Dim2,colour=Status)) + geom_point() 
-
-constrainedModel7 = capscale(X.df.clr ~ Condition(Status), data=annotated_X.clr, distance="canberra")
-constrainedModel7Summary = summary(constrainedModel3)
-CAP7_results = bind_cols(annotated_X.clr[,1:3],as.tibble(constrainedModel7$Ybar))
-ggplot(CAP7_results, aes(x=Dim1, y=Dim2,colour=Status)) + geom_point()
 
 # what about k means clustering
 
